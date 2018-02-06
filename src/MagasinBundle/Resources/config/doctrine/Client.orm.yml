@@ -1,0 +1,33 @@
+MagasinBundle\Entity\Client:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\ClientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        login:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        adresse:
+            type: string
+            length: 255
+        tel:
+            type: string
+            length: 255
+        mail:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

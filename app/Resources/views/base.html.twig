@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+            <link rel="stylesheet" href="{{ asset('bundles/css/style.css') }}">
+
+        {% block stylesheets %}{% endblock %}
+        <meta charset="UTF-8">
+        <title>Admin</title>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

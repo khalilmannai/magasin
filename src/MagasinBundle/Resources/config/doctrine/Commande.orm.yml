@@ -1,0 +1,23 @@
+MagasinBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: date
+        etat:
+            type: string
+            length: 255
+        prix:
+            type: float
+        dateliv:
+            type: date
+        prixliv:
+            type: float
+    lifecycleCallbacks: {  }
