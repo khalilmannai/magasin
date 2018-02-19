@@ -1,7 +1,7 @@
-MagasinBundle\Entity\Client:
+MagasinBundle\Entity\User:
     type: entity
     table: null
-    repositoryClass: MagasinBundle\Repository\ClientRepository
+    repositoryClass: MagasinBundle\Repository\UserRepository
     id:
         id:
             type: integer
@@ -9,16 +9,13 @@ MagasinBundle\Entity\Client:
             generator:
                 strategy: AUTO
     fields:
-        login:
-            type: string
-            length: 255
-        password:
-            type: string
-            length: 255
         nom:
             type: string
             length: 255
         prenom:
+            type: string
+            length: 255
+        email:
             type: string
             length: 255
         adresse:
@@ -27,7 +24,13 @@ MagasinBundle\Entity\Client:
         tel:
             type: string
             length: 255
-        mail:
+        login:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        type:
             type: string
             length: 255
     lifecycleCallbacks: {  }

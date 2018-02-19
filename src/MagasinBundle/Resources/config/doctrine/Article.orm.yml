@@ -18,8 +18,7 @@ MagasinBundle\Entity\Article:
         prix:
             type: float
         image:
-            type: string
-            length: 255
+            type: blob
         quantite:
             type: integer
         description:

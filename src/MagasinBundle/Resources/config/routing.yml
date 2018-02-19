@@ -4,3 +4,33 @@ magasin_homepage:
 magasin_admin:
     path:     /admin
     defaults: { _controller: MagasinBundle:Default:admin }
+magasin_adminhome:
+    path:     /adminhome
+    defaults: { _controller: MagasinBundle:Default:adminhome }
+magasin_ajoutcat:
+    path:     /ajoutcat
+    defaults: { _controller: MagasinBundle:Categorie:ajoutcat }
+magasin_modifiercat:
+    path:     /modifiercat/{id}
+    defaults: { _controller: MagasinBundle:Categorie:modifiercat }
+magasin_supprimercat:
+    path:     /supprimercat/{id}
+    defaults: { _controller: MagasinBundle:Categorie:supprimercat }
+magasin_article:
+    path:     /article
+    defaults: { _controller: MagasinBundle:Article:article}
+magasin_modifierart:
+    path:     /modifierart/{id}
+    defaults: { _controller: MagasinBundle:Article:modifierart}
+magasin_supprimerart:
+    path:     /supprimerart/{id}
+    defaults: { _controller: MagasinBundle:Article:supprimerart }
+magasin_employe:
+    path:     /employe
+    defaults: { _controller: MagasinBundle:Employe:employe }
+magasin_modifieremp:
+    path:     /modifieremp/{id}
+    defaults: { _controller: MagasinBundle:Employe:modifieremp }
+magasin_supprimeremp:
+    path:     /supprimeremp/{id}
+    defaults: { _controller: MagasinBundle:Employe:supprimeremp }
