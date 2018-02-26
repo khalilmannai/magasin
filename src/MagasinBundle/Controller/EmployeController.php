@@ -61,6 +61,7 @@ class EmployeController extends Controller
             $employe->setPassword($_POST['password']);
             $employe->setType($_POST['type']);
             $em->flush();
+
         }
 
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
@@ -73,7 +74,6 @@ class EmployeController extends Controller
         $login=$employe[0]->getLogin();
         $password=$employe[0]->getPassword();
         $type=$employe[0]->getType();
-
         return $this->render('MagasinBundle:Default:modifieremp.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom,"prenom"=>$prenom,"adresse"=>$adresse,"tel"=>$tel,"email"=>$email,"login"=>$login,"password"=>$password,"type"=>$type));
 
     }
@@ -81,13 +81,9 @@ class EmployeController extends Controller
 
     public function supprimerempAction(User $employe)
     {
-
-        if($_POST){
             $em= $this->getDoctrine()->getManager();
             $em->remove($employe);
             $em->flush();
-            return $this->render('MagasinBundle:Default:employe.html.twig');
-        }
         $nom=$employe->getNom();
         return $this->render('MagasinBundle:Default:supprimeremp.html.twig',array("name"=>$_SESSION['login'],"nom"=>$nom));
     }

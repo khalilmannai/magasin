@@ -34,3 +34,18 @@ magasin_modifieremp:
 magasin_supprimeremp:
     path:     /supprimeremp/{id}
     defaults: { _controller: MagasinBundle:Employe:supprimeremp }
+magasin_vendeuracc:
+    path:     /vendeuracc
+    defaults: { _controller: MagasinBundle:Vendeur:vendeuracc }
+magasin_supprimervac:
+    path:     /supprimervac/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:supprimervac }
+magasin_vendeuratt:
+    path:     /vendeuratt
+    defaults: { _controller: MagasinBundle:Vendeur:vendeuratt }
+magasin_supprimervat:
+    path:     /supprimervat/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:supprimervat }
+magasin_acceptervat:
+    path:     /acceptervat/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:acceptervat }

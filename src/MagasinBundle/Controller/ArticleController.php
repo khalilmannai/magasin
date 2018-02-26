@@ -41,6 +41,7 @@ class ArticleController extends Controller
             $article->setDescription($_POST['description']);
             $article->setImage($_POST['image']);
             $em->flush();
+
         }
 
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
@@ -64,12 +65,10 @@ class ArticleController extends Controller
     public function supprimerartAction(Article $article)
     {
 
-        if($_POST){
+
         $em= $this->getDoctrine()->getManager();
         $em->remove($article);
         $em->flush();
-        return $this->render('MagasinBundle:Default:article.html.twig');
-        }
         $nom=$article->getTitre();
         $id=$article->getId();
         return $this->render('MagasinBundle:Default:supprimerart.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom));
