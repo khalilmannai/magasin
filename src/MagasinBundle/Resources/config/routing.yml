@@ -1,6 +1,4 @@
-magasin_homepage:
-    path:     /
-    defaults: { _controller: MagasinBundle:Default:index }
+
 magasin_admin:
     path:     /admin
     defaults: { _controller: MagasinBundle:Default:admin }
@@ -49,3 +47,9 @@ magasin_supprimervat:
 magasin_acceptervat:
     path:     /acceptervat/{id}
     defaults: { _controller: MagasinBundle:Vendeur:acceptervat }
+
+#front---------------
+
+magasin_homepage:
+    path:     /
+    defaults: { _controller: MagasinBundle:Front:index }
