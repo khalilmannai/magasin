@@ -14,7 +14,7 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="493">
               <caret line="74" column="44" lean-forward="false" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
               <folding />
             </state>
@@ -34,8 +34,8 @@
       <file leaf-file-name="connexion.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/connexion.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="109" column="97" lean-forward="false" selection-start-line="109" selection-start-column="97" selection-end-line="109" selection-end-column="97" />
+            <state relative-caret-position="1190">
+              <caret line="108" column="57" lean-forward="true" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
@@ -393,12 +393,12 @@
       <workItem from="1519743400463" duration="1845000" />
       <workItem from="1519830352200" duration="8766000" />
       <workItem from="1519840634218" duration="2413000" />
-      <workItem from="1519994660603" duration="10611000" />
+      <workItem from="1519994660603" duration="11361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178688000" />
+    <option name="totallyTimeSpent" value="179438000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -751,14 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="74" column="44" lean-forward="false" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/admin.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -767,10 +759,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="74" column="44" lean-forward="false" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/connexion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="109" column="97" lean-forward="false" selection-start-line="109" selection-start-column="97" selection-end-line="109" selection-end-column="97" />
+        <state relative-caret-position="1190">
+          <caret line="108" column="57" lean-forward="true" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
