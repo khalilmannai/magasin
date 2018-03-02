@@ -21,7 +21,7 @@
             <input class="search_box" type="checkbox" id="search_box">
             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
             <div class="search_form">
-                <form action="#" method="post">
+                <form action="" method="post">
                     <input type="text" name="Search" placeholder="Search...">
                     <input type="submit" value="Send">
                 </form>
@@ -52,7 +52,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="act">Aceuil</a></li>
+                    <li><a href="/" class="act">Aceuil</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <b class="caret"></b></a>
@@ -78,9 +78,22 @@
                             </div>
                         </ul>
                     </li>
-                    <li><a href="about.html">A Propos</a></li>
-                    <li><a href="about.html">Connexion</a></li>
+
+
                     <li><a href="mail.html">Nous Contacter</a></li>
+                    <li><a href="about.html">A Propos</a></li>
+                    {% if name is defined %}
+
+                        <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="icons.html">Modifier</a></li>
+                                <li><a href="codes.html">LogOut</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="/connexion">Connexion</a></li>
+
+                    {% endif %}
                 </ul>
             </div>
         </nav>
