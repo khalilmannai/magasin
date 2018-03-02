@@ -53,3 +53,6 @@ magasin_acceptervat:
 magasin_homepage:
     path:     /
     defaults: { _controller: MagasinBundle:Front:index }
+magasin_connexion:
+    path:     /connexion
+    defaults: { _controller: MagasinBundle:Front:connexion }

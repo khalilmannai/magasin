@@ -17,4 +17,14 @@ class FrontController extends Controller
     }
 
 
+    public function connexionAction()
+    {
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:connexion.html.twig');
+    }
+
 }
+
+
+
