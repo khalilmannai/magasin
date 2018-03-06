@@ -59,3 +59,6 @@ magasin_connexion:
 magasin_modifierprofile:
     path:     /modifierprofile/{id}
     defaults: { _controller: MagasinBundle:Front:modifierprofile }
+magasin_inscription:
+    path:     /inscription
+    defaults: { _controller: MagasinBundle:Front:inscription }

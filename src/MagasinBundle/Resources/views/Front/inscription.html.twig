@@ -1,0 +1,54 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Inscription</h3>
+            <div class="sliderfig">
+
+
+
+
+                <div class="sap_tabs">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Sign in</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+                            <div class="facts">
+                                <div class="register">
+                                    <form action="/modifierprofile" method="post" style="width:50%;margin-left:25%;text-align: center">
+                                        <input name="nom" placeholder="Nom" type="text" required="">
+                                        <input name="prenom" placeholder="Prenom" type="text" required="">
+                                        <input name="login" placeholder="Pseudo" type="text" required="">
+                                        <input name="adresse" placeholder="Adresse" type="text" required="">
+                                        <input name="tel" placeholder="Num Tel" type="text" required="">
+                                        <input name="email" placeholder="E-mail" type="text" required="">
+                                        <input name="password" placeholder="Prenom" type="text" required="">
+                                        <select name="type">
+                                            <option value="vendeuratt">Vendeur</option>
+                                            <option value="client">Client</option>
+                                        </select>
+                                        <div class="sign-up">
+                                            <input type="submit" value="Inscription">
+                                        </div>
+
+                                    </form>
+                                </div>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

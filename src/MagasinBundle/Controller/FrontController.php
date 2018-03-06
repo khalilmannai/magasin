@@ -71,6 +71,15 @@ class FrontController extends Controller
 
     }
 
+
+    public function inscriptionAction()
+    {
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:inscription.html.twig',array("cat"=>$cat));
+
+    }
+
 }
 
 
