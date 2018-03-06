@@ -56,3 +56,6 @@ magasin_homepage:
 magasin_connexion:
     path:     /connexion
     defaults: { _controller: MagasinBundle:Front:connexion }
+magasin_modifierprofile:
+    path:     /modifierprofile/{id}
+    defaults: { _controller: MagasinBundle:Front:modifierprofile }

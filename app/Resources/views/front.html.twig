@@ -13,17 +13,17 @@
     <!-- //for-mobile-apps -->
     <!-- Custom Theme files -->
     {% block stylesheets %}
-    <link href="bundles/front/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="bundles/front/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="bundles/front/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="bundles/front/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
     <!-- font-awesome icons -->
-    <link href="bundles/front/css/font-awesome.css" rel="stylesheet">
+    <link href="/bundles/front/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="bundles/front/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="bundles/front/css/jquery.countdown.css" /> <!-- countdown -->
+    <script src="/bundles/front/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/bundles/front/css/jquery.countdown.css" /> <!-- countdown -->
     {% endblock %}
     <!-- //js -->
     <!-- web fonts -->
@@ -43,7 +43,7 @@
 </head>
 
 <!-- for bootstrap working -->
-<script type="text/javascript" src="bundles/front/js/bootstrap-3.1.1.min.js"></script>
+<script type="text/javascript" src="/bundles/front/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <!-- header modal -->
 
@@ -53,7 +53,19 @@
 <div class="header" id="home1">
     <div class="container">
         <div class="w3l_login">
-            <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+            {% if name is defined %}
+                <div class="dropdown">
+                    <button style="padding:28% 35%;margin-top:20%;margin-left:120%" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="icons.html">Modifier</a></li>
+                        <li><a href="/connexion">LogOut</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="/connexion" data-toggle="modal"><h4>Connexion</h4></a>
+
+            {% endif %}
         </div>
         <div class="w3l_logo">
             <h1><a href="index.html">Techri ???<span>Echri Terba7</span></a></h1>
@@ -123,18 +135,6 @@
 
                     <li><a href="mail.html">Nous Contacter</a></li>
                     <li><a href="about.html">A Propos</a></li>
-                    {% if name is defined %}
-
-                        <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ name }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="icons.html">Modifier</a></li>
-                                <li><a href="/connexion">LogOut</a></li>
-                            </ul>
-                        </li>
-                    {% else %}
-                        <li><a href="/connexion">Connexion</a></li>
-
-                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -210,7 +210,7 @@
 </div>
 <!-- //footer -->
 <!-- cart-js -->
-<script src="bundles/front/js/minicart.js"></script>
+<script src="/bundles/front/js/minicart.js"></script>
 <script>
     w3ls.render();
 
