@@ -15,7 +15,7 @@ class FrontController extends Controller
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
         if(isset($_SESSION['login'])){
-            return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login']));
+            return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
         }
         return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat));
     }
@@ -33,9 +33,11 @@ class FrontController extends Controller
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
             $user=$em->findOneBy(array('email'=>$_POST['Email'],'password'=>$_POST['Password']));
             if($user){
+                $id=$user->getId();
                 $login=$user->getLogin();
                 $_SESSION['login']=$login;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login']));
+                $_SESSION['id']=$id;
+                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
 
             }else{
                 return $this->render('MagasinBundle:Front:connexion.html.twig',array("error"=>" login Incorrect !"));
@@ -51,6 +53,11 @@ class FrontController extends Controller
 
     public function modifierprofileAction($id)
     {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $emx = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
+        $us=$emx->findByid($id);
+        $type=$us[0]->getType();
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
             $profile = $em->getRepository('MagasinBundle\Entity\User')->find($id);
@@ -59,16 +66,20 @@ class FrontController extends Controller
             $profile->setEmail($_POST['email']);
             $profile->setTel($_POST['tel']);
             $profile->setAdresse($_POST['adresse']);
-            $profile->setType($_POST['type']);
             $profile->setLogin($_POST['login']);
             $profile->setPassword($_POST['password']);
-            $em->flush();
-            return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("name"=>$_SESSION['login']));
+            $profile->setType($type);
+            if($_POST['oldpassword']==$us[0]->getPassword()){
+                $em->flush();
+                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
+            }
+            else{
+                return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"us"=>$us,"error"=>"Mot de passe incorrect !"));
+            }
         }
 
-        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
-        $cat = $ems->findAll();
-        return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login']));
+
+        return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"us"=>$us));
 
     }
 

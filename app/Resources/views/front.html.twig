@@ -52,23 +52,25 @@
 <!-- header -->
 <div class="header" id="home1">
     <div class="container">
-        <div class="w3l_login">
-            {% if name is defined %}
+        {% if name is defined %}
+        <div class="w3l_login" style="padding-right:7%;">
                 <div class="dropdown">
                     <button style="padding:28% 35%;margin-top:20%;margin-left:120%" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </button>
                     <ul class="dropdown-menu">
-                        <li><a href="icons.html">Modifier</a></li>
+                        <li><a href="/modifierprofile/{{ id }}">Modifier</a></li>
                         <li><a href="/connexion">LogOut</a></li>
                     </ul>
                 </div>
-            {% else %}
-                <a href="/connexion" data-toggle="modal" style="background-color:#3c43a4"><h4>Connexion</h4></a>
-
-            {% endif %}
         </div>
+            {% else %}
+        <div class="w3l_login">
+                <a href="/connexion" data-toggle="modal" style="background-color:#3c43a4"><h4>Connexion</h4></a>
+        </div>
+            {% endif %}
+
         <div class="w3l_logo">
-            <h1><a href="index.html">Techri ???<span>Echri Terba7</span></a></h1>
+            <h1><a href="/">Techri ???<span>Echri Terba7</span></a></h1>
         </div>
         <div class="search">
             <input class="search_box" type="checkbox" id="search_box">
@@ -132,7 +134,7 @@
                         </ul>
                     </li>
 
-
+                    <li style="background-color:#2028a0;"><a href="mail.html">Déposez votre annonce</a></li>
                     <li><a href="mail.html">Nous Contacter</a></li>
                     <li><a href="about.html">A Propos</a></li>
                 </ul>
