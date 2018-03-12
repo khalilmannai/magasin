@@ -15,7 +15,7 @@ class FrontController extends Controller
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
         if(isset($_SESSION['login'])){
-            return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
+            return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
         }
         return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat));
     }
@@ -34,10 +34,12 @@ class FrontController extends Controller
             $user=$em->findOneBy(array('email'=>$_POST['Email'],'password'=>$_POST['Password']));
             if($user){
                 $id=$user->getId();
+                $type=$user->getType();
                 $login=$user->getLogin();
                 $_SESSION['login']=$login;
                 $_SESSION['id']=$id;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
+                $_SESSION['type']=$type;
+                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
 
             }else{
                 return $this->render('MagasinBundle:Front:connexion.html.twig',array("error"=>" login Incorrect !"));
@@ -71,15 +73,15 @@ class FrontController extends Controller
             $profile->setType($type);
             if($_POST['oldpassword']==$us[0]->getPassword()){
                 $em->flush();
-                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id']));
+                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
             }
             else{
-                return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"us"=>$us,"error"=>"Mot de passe incorrect !"));
+                return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type'],"us"=>$us,"error"=>"Mot de passe incorrect !"));
             }
         }
 
 
-        return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"us"=>$us));
+        return $this->render('MagasinBundle:Front:modifierprofile.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id'],"us"=>$us));
 
     }
 
@@ -89,6 +91,38 @@ class FrontController extends Controller
         if($_POST){
             $em=$this->getDoctrine()->getManager();
             $user= new User();
+            $user->setNom($_POST['nom']);
+            $user->setPrenom($_POST['prenom']);
+            $user->setAdresse($_POST['adresse']);
+            $user->setTel($_POST['tel']);
+            $user->setEmail($_POST['email']);
+            $user->setLogin($_POST['login']);
+            $user->setPassword($_POST['password']);
+            $user->setType($_POST['type']);
+            $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$ema->findAll();
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
+            $us= $ems->findOneBy(array('email'=>$_POST['email']));
+            if($us){
+                return $this->render('MagasinBundle:Front:inscription.html.twig',array('cat'=> $cat,'error'=>"Cette adresse e-mail est déjà utilisé. Essayez un autre adresse.!"));
+            }else{
+                $em->persist($user);
+                $em->flush();
+                return $this->render('MagasinBundle:Front:inscription.html.twig',array('cat'=> $cat,'ok'=>"inscription effectuée, vous pouvez se connecter ."));
+            }
+        }
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:inscription.html.twig',array("cat"=>$cat));
+
+    }
+
+
+    public function ajoutarticleAction()
+    {
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $article= new Article();
             $user->setNom($_POST['nom']);
             $user->setPrenom($_POST['prenom']);
             $user->setAdresse($_POST['adresse']);
