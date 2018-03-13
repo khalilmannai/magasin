@@ -65,3 +65,6 @@ magasin_modifierprofile:
 magasin_inscription:
     path:     /inscription
     defaults: { _controller: MagasinBundle:Front:inscription }
+magasin_ajoutarticle:
+    path:     /ajoutarticle
+    defaults: { _controller: MagasinBundle:Front:ajoutarticle }

@@ -42,6 +42,11 @@ class Article
      */
     private $description;
 
+    /**
+     * @var int
+     */
+    private $idvendeur;
+
 
     /**
      * Get id
@@ -195,6 +200,30 @@ class Article
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set idvendeur
+     *
+     * @param integer $idvendeur
+     *
+     * @return Article
+     */
+    public function setIdvendeur($idvendeur)
+    {
+        $this->idvendeur = $idvendeur;
+
+        return $this;
+    }
+
+    /**
+     * Get idvendeur
+     *
+     * @return int
+     */
+    public function getIdvendeur()
+    {
+        return $this->idvendeur;
     }
 }
 

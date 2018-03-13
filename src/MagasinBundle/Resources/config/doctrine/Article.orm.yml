@@ -24,4 +24,6 @@ MagasinBundle\Entity\Article:
         description:
             type: string
             length: 255
+        idvendeur:
+            type: integer
     lifecycleCallbacks: {  }
