@@ -24,7 +24,7 @@ class EmployeController extends Controller
             $employe->setEmail($_POST['email']);
             $employe->setLogin($_POST['login']);
             $employe->setPassword($_POST['password']);
-            $employe->setType($_POST['type']);
+            $employe->setType("logisticien");
             $em->persist($employe);
             $em->flush();
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
@@ -51,17 +51,18 @@ class EmployeController extends Controller
     {
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
+            $emp=$em->findAll();
             $employe = $em->getRepository('MagasinBundle\Entity\User')->find($id);
             $employe->setNom($_POST['nom']);
-            $employe->setPreom($_POST['prenom']);
+            $employe->setPrenom($_POST['prenom']);
             $employe->setAdresse($_POST['adresse']);
             $employe->setTel($_POST['tel']);
             $employe->setEmail($_POST['email']);
             $employe->setLogin($_POST['login']);
             $employe->setPassword($_POST['password']);
-            $employe->setType($_POST['type']);
+            $employe->setPassword($_POST['logisticien']);
             $em->flush();
-
+            return $this->render('MagasinBundle:Default:employe.html.twig',array('emp'=>$emp,"id"=>$id,"name"=>$_SESSION['login']));
         }
 
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');

@@ -68,3 +68,9 @@ magasin_inscription:
 magasin_ajoutarticle:
     path:     /ajoutarticle
     defaults: { _controller: MagasinBundle:Front:ajoutarticle }
+magasin_devenirvendeur:
+    path:     /devenirvendeur
+    defaults: { _controller: MagasinBundle:Front:devenirvendeur }
+magasin_inscrivendeur:
+    path:     /inscrivendeur
+    defaults: { _controller: MagasinBundle:Front:inscrivendeur }

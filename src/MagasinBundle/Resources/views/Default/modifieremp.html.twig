@@ -46,7 +46,7 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div>
-                            <form action="/employe" method="POST">
+                            <form action="/modifieremp/{{ id }}" method="POST">
 
                                 <label for="fname">Nom </label>
                                 <input type="text" id="fname" name="nom" value="{{ nom }}">
@@ -63,11 +63,6 @@
                                 <label for="fname">Password </label>
                                 <input type="password" id="fname" name="password" placeholder="*******">
 
-                                <label for="country">Type</label>
-                                <select  name="type">
-                                    <option value="vendeur">vendeur</option>
-                                    <option value="logisticien">logisticien</option>
-                                </select>
 
 
                                 <input type="submit" value="Modifier">

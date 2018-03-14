@@ -48,21 +48,18 @@ class CategorieController extends Controller
 
     public function modifiercatAction($id)
     {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $categorie=$ems->findByid($id);
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
             $Categorie = $em->getRepository('MagasinBundle\Entity\Categorie')->find($id);
             $Categorie->setNom($_POST['nom']);
-            $Categorie->setParentid($_POST['parent']);
+            $Categorie->setIdparent($_POST['parent']);
             $em->flush();
-            return $this->render('MagasinBundle:Default:ajoutcat.html.twig');
+            return $this->render('MagasinBundle:Default:ajoutcat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"cat"=>$cat,"ok"=>"Votre catégorie a été modifié !"));
         }
-
-        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
-        $cat = $ems->findAll();
-        $categorie=$ems->findByid($id);
-        $catname=$categorie[0]->getNom();
-        $catparentid=$categorie[0]->getIdparent();
-        return $this->render('MagasinBundle:Default:modifiercat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"cat"=>$cat,"catname"=>$catname,"catparentid"=>$catparentid));
+        return $this->render('MagasinBundle:Default:modifiercat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"cat"=>$cat,"categorie"=>$categorie));
 
     }
 

@@ -45,11 +45,7 @@
                                 <label for="fname">Password </label>
                                 <input type="password" id="fname" name="password" placeholder="*******">
 
-                                <label for="country">Type</label>
-                                <select  name="type">
-                                    <option value="vendeur">vendeur</option>
-                                    <option value="logisticien">logisticien</option>
-                                </select>
+
 
                                 <input type="submit" value="Ajouter">
 
@@ -71,7 +67,7 @@
 
                                     {% if emp is defined %}
                                         {% for c in emp %}
-                                            {% if c.type=="vendeur" or c.type=="logisticien" %}
+                                            {% if c.type=="logisticien" %}
                                             <tr>
                                             <td>{{ c.nom }}</td>
                                             <td>{{ c.prenom  }}</td>

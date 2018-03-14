@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MagasinBundle\Entity\Categorie;
 use MagasinBundle\Entity\User;
 use MagasinBundle\Entity\Article;
+use MagasinBundle\Entity\Vendeur;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
@@ -99,7 +100,7 @@ class FrontController extends Controller
             $user->setEmail($_POST['email']);
             $user->setLogin($_POST['login']);
             $user->setPassword($_POST['password']);
-            $user->setType($_POST['type']);
+            $user->setType("client");
             $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
             $cat=$ema->findAll();
             $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
@@ -142,6 +143,43 @@ class FrontController extends Controller
         return $this->render('MagasinBundle:Front:ajoutarticle.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
     }
+    public function devenirvendeurAction()
+    {
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:devenirvendeur.html.twig',array('cat'=> $cat));
+    }
+
+    public function inscrivendeurAction()
+    {
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $user= new Vendeur();
+            $user->setNom($_POST['nom']);
+            $user->setPrenom($_POST['prenom']);
+            $user->setAdresse($_POST['adresse']);
+            $user->setTel($_POST['tel']);
+            $user->setEmail($_POST['email']);
+            $user->setMagasin($_POST['magasin']);
+            $user->setPassword($_POST['password']);
+            $user->setType("vendeuratt");
+            $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$ema->findAll();
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
+            $us= $ems->findOneBy(array('email'=>$_POST['email']));
+            if($us){
+                return $this->render('MagasinBundle:Front:inscrivendeur.html.twig',array('cat'=> $cat,'error'=>"Cette adresse e-mail est déjà utilisé. Essayez un autre adresse.!"));
+            }else{
+                $em->persist($user);
+                $em->flush();
+                return $this->render('MagasinBundle:Front:inscrivendeur.html.twig',array('cat'=> $cat,'ok'=>"inscription effectuée, vous pouvez se connecter ."));
+            }
+        }
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:inscrivendeur.html.twig',array("cat"=>$cat));
+    }
+
 
 }
 

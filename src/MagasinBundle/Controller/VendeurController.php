@@ -14,7 +14,7 @@ class VendeurController extends Controller
 
     public function vendeuraccAction(){
 
-        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
         $emp=$em->findAll();
         if($emp){
             return $this->render('MagasinBundle:Default:vendeuracc.html.twig',array('emp'=> $emp,"name"=>$_SESSION['login']));
@@ -25,7 +25,7 @@ class VendeurController extends Controller
 
     public function vendeurattAction(){
 
-        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
         $emp=$em->findAll();
         if($emp){
             return $this->render('MagasinBundle:Default:vendeuratt.html.twig',array('emp'=> $emp,"name"=>$_SESSION['login']));
@@ -37,7 +37,7 @@ class VendeurController extends Controller
 
 
 
-    public function supprimervacAction(User $employe)
+    public function supprimervacAction(Vendeur $employe)
     {
 
         if($_POST){
@@ -51,7 +51,7 @@ class VendeurController extends Controller
     }
 
 
-    public function supprimervatAction(User $employe)
+    public function supprimervatAction(Vendeur $employe)
     {
         $em= $this->getDoctrine()->getManager();
         $em->remove($employe);
@@ -63,7 +63,7 @@ class VendeurController extends Controller
     public function acceptervatAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $employe = $em->getRepository('MagasinBundle\Entity\User')->find($id);
+        $employe = $em->getRepository('MagasinBundle\Entity\Vendeur')->find($id);
         $employe->setType("vendeuracc");
         $em->flush();
         $nom=$employe->getNom();

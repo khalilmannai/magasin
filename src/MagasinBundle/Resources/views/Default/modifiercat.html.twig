@@ -46,9 +46,10 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div>
-                            <form action="/ajoutcat" method="POST">
+                            <form action="/modifiercat/{{ id }}" method="POST">
                                 <label for="fname">Nom Catégorie</label>
-                                <input type="text" id="fname" value="{{ catname }}" name="nom" placeholder="Nom catégorie..">
+                                {% for c in categorie %}
+                                <input type="text" id="fname" value="{{ c.nom }}" name="nom" placeholder="Nom catégorie..">
 
                                 <label for="country">Catégorie Parent</label>
                                 <select  name="parent">
@@ -56,7 +57,7 @@
                                     {% if cat is defined %}
                                         {% for c in cat %}
                                                 {% if c.idparent==0 and c.id!=id %}
-                                                    {% if c.id == catparentid %}
+                                                    {% if c.id == c.idparent %}
                                                         <option  value="{{ c.id }}" selected >
                                                             {{ c.nom }}
                                                         </option>
@@ -73,8 +74,14 @@
                                     {% endif %}
 
                                 </select>
-
+                                {% endfor %}
                                 <input type="submit" value="Modifier">
+                                {% if ok is defined %}
+                                    <div class="alert alert-success" style="text-align:center;margin-top: 2%;margin-left: 20%;">
+                                        <strong>Erruer !</strong> {{ error }}
+                                    </div>
+                                    <br>
+                                {% endif %}
                             </form>
                         </div>
                     </div>
