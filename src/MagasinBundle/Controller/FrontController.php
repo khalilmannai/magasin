@@ -180,6 +180,20 @@ class FrontController extends Controller
         return $this->render('MagasinBundle:Front:inscrivendeur.html.twig',array("cat"=>$cat));
     }
 
+    public function mesarticlesAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $art=$em->findBy(array('idvendeur'=>$_SESSION['id']));
+        if($art){
+        return $this->render('MagasinBundle:Front:mesarticles.html.twig',array("art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:mesarticles.html.twig',array("error"=>"Pas d'articles !","cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+    }
+
 
 }
 

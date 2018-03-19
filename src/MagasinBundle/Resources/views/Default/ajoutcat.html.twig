@@ -80,14 +80,36 @@
                                                 <th>{{ c.nom }}</th>
                                                 <th style="text-align: center">
                                                     <a href="/modifiercat/{{ c.id }}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                                    <a href="/supprimercat/{{ c.id }}"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                                    <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModals{{ c.id }}"><i class="fa fa-trash-o "></i></button></a>
                                                 </th>
+                                                {#popup#}
+                                                <div class="modal fade" id="exampleModals{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Confirmation de la suppression</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body" style="text-align: center">
+                                                                Etes-vous sûr de vouloir supprimer le catégorie <strong>{{ c.nom }}</strong> ?
+                                                            </div>
+                                                            <div class="modal-footer" style="text-align: center">
+                                                                <a href="/supprimercat/{{ c.id }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                                                 {% for a in cat %}
                                                     {% if a.id==c.idparent %}
                                                         <th><i>{{ a.nom }}</i></th>
                                                     {% endif %}
                                                 {% endfor %}
+
                                             </tr>
                                             {% for b in cat %}
                                                 {% if c.id==b.idparent %}
@@ -95,8 +117,30 @@
                                                         <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{b.nom }}</td>
                                                         <td style="text-align: center">
                                                             <a href="/modifiercat/{{ b.id }}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                                            <a href="/supprimercat/{{ b.id }}"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                                            <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModal{{ b.id }}"><i class="fa fa-trash-o "></i></button></a>
                                                         </td>
+                                                        {#popup#}
+                                                        <div class="modal fade" id="exampleModal{{ b.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Confirmation de la suppression</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body" style="text-align: center">
+                                                                        Etes-vous sûr de vouloir supprimer le catégorie <strong>{{ b.nom }}</strong> ?
+                                                                    </div>
+                                                                    <div class="modal-footer" style="text-align: center">
+                                                                        <a href="/supprimercat/{{ b.id }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                     </tr>
                                                 {% endif %}
                                             {% endfor %}

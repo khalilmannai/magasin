@@ -74,3 +74,6 @@ magasin_devenirvendeur:
 magasin_inscrivendeur:
     path:     /inscrivendeur
     defaults: { _controller: MagasinBundle:Front:inscrivendeur }
+magasin_mesarticles:
+    path:     /mesarticles
+    defaults: { _controller: MagasinBundle:Front:mesarticles }

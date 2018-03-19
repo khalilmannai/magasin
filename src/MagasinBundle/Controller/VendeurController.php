@@ -3,7 +3,7 @@
 namespace MagasinBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use MagasinBundle\Entity\User;
+use MagasinBundle\Entity\Vendeur;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
@@ -30,7 +30,7 @@ class VendeurController extends Controller
         if($emp){
             return $this->render('MagasinBundle:Default:vendeuratt.html.twig',array('emp'=> $emp,"name"=>$_SESSION['login']));
         }else{
-            return $this->render('MagasinBundle:Default:vendeuratt.html.twig',array("error"=>"Pas de vendeur accepté!","name"=>$_SESSION['login']));
+            return $this->render('MagasinBundle:Default:vendeuratt.html.twig',array("error"=>"Pas de vendeur en attente!","name"=>$_SESSION['login']));
         }
     }
 
@@ -40,12 +40,11 @@ class VendeurController extends Controller
     public function supprimervacAction(Vendeur $employe)
     {
 
-        if($_POST){
+
             $em= $this->getDoctrine()->getManager();
             $em->remove($employe);
             $em->flush();
-            return $this->render('MagasinBundle:Default:vendeuracc.html.twig');
-        }
+
         $nom=$employe->getNom();
         return $this->render('MagasinBundle:Default:supprimervac.html.twig',array("name"=>$_SESSION['login'],"nom"=>$nom));
     }

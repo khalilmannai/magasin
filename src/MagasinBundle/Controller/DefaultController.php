@@ -22,12 +22,18 @@ class DefaultController extends Controller
         if($_POST){
             session_start();
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Admin');
+            $ems=$this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
             $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
+            $logi=$ems->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
             if($user){
                 $_SESSION['login']=$_POST['Pseudo'];
                 return $this->render('MagasinBundle:Default:adminhome.html.twig',array("name"=>$_SESSION['login']));
                 
-            }else{
+            }elseif ($logi){
+                $_SESSION['login']=$_POST['Pseudo'];
+                return $this->render('MagasinBundle:Default:adminhome.html.twig',array("name"=>$_SESSION['login']));
+            }
+            else{
                 return $this->render('MagasinBundle:Default:admin.html.twig',array("error"=>" login Incorrect !"));
             }
         }else{
