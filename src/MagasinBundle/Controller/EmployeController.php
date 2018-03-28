@@ -13,7 +13,7 @@ class EmployeController extends Controller
 
 
     public function employeAction(){
-
+        if($_SESSION['type']=="admin"){
         if($_POST){
             $em=$this->getDoctrine()->getManager();
             $employe= new User();
@@ -43,12 +43,17 @@ class EmployeController extends Controller
                 return $this->render('MagasinBundle:Default:employe.html.twig',array("error"=>"Pas d'employés!","name"=>$_SESSION['login']));
             }
         }
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
     }
 
 
 
     public function modifierempAction($id)
     {
+
+        if($_SESSION['type']=="admin"){
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
             $emp=$em->findAll();
@@ -76,18 +81,25 @@ class EmployeController extends Controller
         $password=$employe[0]->getPassword();
         $type=$employe[0]->getType();
         return $this->render('MagasinBundle:Default:modifieremp.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom,"prenom"=>$prenom,"adresse"=>$adresse,"tel"=>$tel,"email"=>$email,"login"=>$login,"password"=>$password,"type"=>$type));
-
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
     }
 
 
     public function supprimerempAction(User $employe)
     {
+
+        if($_SESSION['type']=="admin"){
             $em= $this->getDoctrine()->getManager();
             $em->remove($employe);
             $em->flush();
         $nom=$employe->getNom();
         return $this->render('MagasinBundle:Default:supprimeremp.html.twig',array("name"=>$_SESSION['login'],"nom"=>$nom));
-    }
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
+        }
 
 
 

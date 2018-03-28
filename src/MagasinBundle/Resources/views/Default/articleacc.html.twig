@@ -27,7 +27,7 @@
                         <div>
                             <form action="/ajoutcat" method="POST">
 
-                                <h4><i class="fa fa-angle-right"></i> Liste Des Articles</h4><hr>
+                                <h4><i class="fa fa-angle-right"></i> Liste Des Articles Acceptés</h4><hr>
                                 <input type="text" id="rech" style="height: 40px;width:40%;margin-left:60%" placeholder="Search.." /><br/><br/>
                                 <table class="table table-striped table-advance table-hover" id="tab">
 
@@ -44,7 +44,8 @@
 
                                     {% if art is defined %}
                                         {% for c in art %}
-                                            <tr>
+                                    {% if c.type== "articleacc" %}
+                                        <tr>
                                                 <td>{{ c.titre }}</td>
                                                 <td>{{ c.categorie }}</td>
                                                 <td style="text-align: center">
@@ -74,7 +75,7 @@
                                             </div>
 
 
-
+                                            {% endif %}
                                         {% endfor %}
                                     {% endif %}
 

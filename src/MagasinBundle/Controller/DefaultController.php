@@ -27,11 +27,15 @@ class DefaultController extends Controller
             $logi=$ems->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
             if($user){
                 $_SESSION['login']=$_POST['Pseudo'];
+                $_SESSION['type']="admin";
                 return $this->render('MagasinBundle:Default:adminhome.html.twig',array("name"=>$_SESSION['login']));
                 
             }elseif ($logi){
                 $_SESSION['login']=$_POST['Pseudo'];
-                return $this->render('MagasinBundle:Default:adminhome.html.twig',array("name"=>$_SESSION['login']));
+                $_SESSION['type']="logisticien";
+                $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+                $art=$em->findAll();
+                return $this->render('MagasinBundle:Default:article.html.twig',array("art"=>$art,"name"=>$_SESSION['login']));
             }
             else{
                 return $this->render('MagasinBundle:Default:admin.html.twig',array("error"=>" login Incorrect !"));
@@ -41,7 +45,14 @@ class DefaultController extends Controller
         }    }
     public function adminhomeAction()
     {
+        if(isset($_SESSION)){
+        if($_SESSION['type']=="admin" ){
         return $this->render('MagasinBundle:Default:adminhome.html.twig',array("name"=>$_SESSION['login']));
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
+        }
+        else{return $this->render('MagasinBundle:Front:error.html.twig');}
     }
 
 

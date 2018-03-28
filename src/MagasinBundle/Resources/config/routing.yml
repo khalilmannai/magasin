@@ -14,9 +14,12 @@ magasin_modifiercat:
 magasin_supprimercat:
     path:     /supprimercat/{id}
     defaults: { _controller: MagasinBundle:Categorie:supprimercat }
-magasin_article:
-    path:     /article
-    defaults: { _controller: MagasinBundle:Article:article}
+magasin_articlett:
+    path:     /articleatt
+    defaults: { _controller: MagasinBundle:Article:articleatt}
+magasin_articlecc:
+    path:     /articleacc
+    defaults: { _controller: MagasinBundle:Article:articleacc}
 magasin_modifierart:
     path:     /modifierart/{id}
     defaults: { _controller: MagasinBundle:Article:modifierart}
@@ -47,6 +50,9 @@ magasin_supprimervat:
 magasin_acceptervat:
     path:     /acceptervat/{id}
     defaults: { _controller: MagasinBundle:Vendeur:acceptervat }
+magasin_accepterart:
+    path:     /accepterart/{id}
+    defaults: { _controller: MagasinBundle:Article:accepterart }
 
 #front---------------
 
@@ -77,3 +83,15 @@ magasin_inscrivendeur:
 magasin_mesarticles:
     path:     /mesarticles
     defaults: { _controller: MagasinBundle:Front:mesarticles }
+magasin_produit:
+    path:     /produit
+    defaults: { _controller: MagasinBundle:Front:produit }
+magasin_error:
+    path:     /error
+    defaults: { _controller: MagasinBundle:Front:error }
+magasin_suppart:
+    path:     /suppart/{id}
+    defaults: { _controller: MagasinBundle:Front:suppart }
+magasin_commande:
+    path:     /commande
+    defaults: { _controller: MagasinBundle:Front:commande }

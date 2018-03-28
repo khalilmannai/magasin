@@ -14,6 +14,7 @@ class CategorieController extends Controller
 
 
     public function ajoutcatAction(){
+        if($_SESSION['type']=="admin"){
         if($_POST){
             $em=$this->getDoctrine()->getManager();
             $Categorie= new Categorie();
@@ -41,6 +42,9 @@ class CategorieController extends Controller
                 return $this->render('MagasinBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!","name"=>$_SESSION['login']));
             }
         }
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
 
 
     }
@@ -48,6 +52,7 @@ class CategorieController extends Controller
 
     public function modifiercatAction($id)
     {
+        if($_SESSION['type']=="admin"){
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
         $categorie=$ems->findByid($id);
@@ -60,12 +65,16 @@ class CategorieController extends Controller
             return $this->render('MagasinBundle:Default:ajoutcat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"cat"=>$cat,"ok"=>"Votre catégorie a été modifié !"));
         }
         return $this->render('MagasinBundle:Default:modifiercat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"cat"=>$cat,"categorie"=>$categorie));
-
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
     }
 
 
     public function supprimercatAction(Categorie $categorie)
     {
+
+        if($_SESSION['type']=="admin"){
         $nom=$categorie->getNom();
         $id=$categorie->getId();
         $em= $this->getDoctrine()->getManager();
@@ -73,6 +82,9 @@ class CategorieController extends Controller
         $em->flush();
 
         return $this->render('MagasinBundle:Default:supprimercat.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom));
-    }
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
+        }
 
 }

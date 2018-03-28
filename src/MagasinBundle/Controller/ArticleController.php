@@ -13,23 +13,45 @@ class ArticleController extends Controller
 
 
 
-    public function articleAction(){
+    public function articleattAction(){
+        if($_SESSION['type']=="admin" or $_SESSION['type']=="logisticien"){
 
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
-            $art=$em->findAll();
+            $art=$em->findBy(array('type'=>"articleatt"));
             if($art){
-                return $this->render('MagasinBundle:Default:article.html.twig',array('art'=> $art,"name"=>$_SESSION['login']));
+                return $this->render('MagasinBundle:Default:articleatt.html.twig',array('art'=> $art,"name"=>$_SESSION['login']));
             }else{
-                return $this->render('MagasinBundle:Default:article.html.twig',array("error"=>"Pas d'article!","name"=>$_SESSION['login']));
+                return $this->render('MagasinBundle:Default:articleatt.html.twig',array("error"=>"Pas d'article en attente!","name"=>$_SESSION['login']));
             }
 
-        return $this->render('MagasinBundle:Default:article.html.twig',array("name"=>$_SESSION['login']));
+        return $this->render('MagasinBundle:Default:articleatt.html.twig',array("name"=>$_SESSION['login']));
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
 
+    }
+
+    public function articleaccAction(){
+        if($_SESSION['type']=="admin" or $_SESSION['type']=="logisticien"){
+
+            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+            $art=$em->findBy(array('type'=>"articleacc"));
+            if($art){
+                return $this->render('MagasinBundle:Default:articleacc.html.twig',array('art'=> $art,"name"=>$_SESSION['login']));
+            }else{
+                return $this->render('MagasinBundle:Default:articleacc.html.twig',array("error"=>"Pas d'article accepté!","name"=>$_SESSION['login']));
+            }
+
+            return $this->render('MagasinBundle:Default:articleacc.html.twig',array("name"=>$_SESSION['login']));
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
 
     }
 
     public function modifierartAction($id)
     {
+        if($_SESSION['type']=="admin" or $_SESSION['type']=="logisticien"){
 
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
@@ -58,20 +80,39 @@ class ArticleController extends Controller
 
 
         return $this->render('MagasinBundle:Default:modifierart.html.twig',array("cat"=>$cats,"name"=>$_SESSION['login'],"nom"=>$nom,"desc"=>$desc,"prix"=>$prix,"img"=>$img,"cats"=>$cat,"qt"=>$qt));
-
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
 
     }
 
     public function supprimerartAction(Article $article)
     {
-
-
+        if($_SESSION['type']=="admin" or $_SESSION['type']=="logisticien"){
         $em= $this->getDoctrine()->getManager();
         $em->remove($article);
         $em->flush();
         $nom=$article->getTitre();
         $id=$article->getId();
         return $this->render('MagasinBundle:Default:supprimerart.html.twig',array("id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom));
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
+
+    }
+    public function accepterartAction($id)
+    {
+
+        if($_SESSION['type']=="admin"){
+            $em = $this->getDoctrine()->getManager();
+            $article = $em->getRepository('MagasinBundle\Entity\Article')->find($id);
+            $article->setType("articleacc");
+            $em->flush();
+            $nom=$article->getTitre();
+            return $this->render('MagasinBundle:Default:accepterart.html.twig',array("name"=>$_SESSION['login'],"nom"=>$nom));
+        }
+        else
+        {return $this->render('MagasinBundle:Front:error.html.twig');}
     }
 
 

@@ -18,7 +18,8 @@ MagasinBundle\Entity\Article:
         prix:
             type: float
         image:
-            type: blob
+            type: string
+            length: 255
         quantite:
             type: integer
         description:
@@ -26,4 +27,7 @@ MagasinBundle\Entity\Article:
             length: 255
         idvendeur:
             type: integer
+        type:
+            type: string
+            length: 255
     lifecycleCallbacks: {  }

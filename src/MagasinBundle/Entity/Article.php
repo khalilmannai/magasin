@@ -47,6 +47,11 @@ class Article
      */
     private $idvendeur;
 
+    /**
+     * @var string
+     */
+    private $type;
+
 
     /**
      * Get id
@@ -224,6 +229,30 @@ class Article
     public function getIdvendeur()
     {
         return $this->idvendeur;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Article
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
 

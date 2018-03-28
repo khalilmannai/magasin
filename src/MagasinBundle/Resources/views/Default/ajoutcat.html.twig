@@ -76,9 +76,9 @@
                                 {% for c in cat %}
                                     {% if cat is defined %}
                                         {% if c.idparent==0 %}
-                                            <tr style="background-color: white" id="row" data-value="{{ c.id }}">
-                                                <th>{{ c.nom }}</th>
-                                                <th style="text-align: center">
+                                            <tr style="background-color:#d6d6d6" id="row" data-value="{{ c.id }}">
+                                                <th style="background-color:#d6d6d6">{{ c.nom }}</th>
+                                                <th style="text-align: center;background-color:#d6d6d6;">
                                                     <a href="/modifiercat/{{ c.id }}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                                     <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModals{{ c.id }}"><i class="fa fa-trash-o "></i></button></a>
                                                 </th>
@@ -113,7 +113,7 @@
                                             </tr>
                                             {% for b in cat %}
                                                 {% if c.id==b.idparent %}
-                                                    <tr style="background-color: #d6d6d6" id="row" data-value="{{ b.id }}">
+                                                    <tr style="background-color: #f9f9f9" id="row" data-value="{{ b.id }}">
                                                         <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{b.nom }}</td>
                                                         <td style="text-align: center">
                                                             <a href="/modifiercat/{{ b.id }}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
