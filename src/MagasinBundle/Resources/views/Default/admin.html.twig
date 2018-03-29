@@ -31,14 +31,14 @@
 
 {% block body %}
 
-    <span href="#" class="button" id="toggle-login">Welcome !</span>
+    <span href="#" class="button" id="toggle-login">Bienvenu !</span>
 
     <div id="login">
         <div id="triangle"></div>
-        <h1>Log in</h1>
+        <h1>Se connecter</h1>
         <form name="f" method="POST" action="/admin">
-            <input type="text" name="Pseudo" placeholder="Username" />
-            <input type="password" name="Password" placeholder="Password" />
+            <input type="text" name="Pseudo" placeholder="Login" />
+            <input type="password" name="Password" placeholder="Mot de passe" />
 
             {% if error is defined %}
                 <div class="alert alert-danger" >
@@ -51,7 +51,7 @@
                 </div>
             {% endif %}
 
-            <input type="submit" value="Log in" />
+            <input type="submit" value="Connexion" />
         </form>
     </div>
 
