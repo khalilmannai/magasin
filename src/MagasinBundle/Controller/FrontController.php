@@ -250,7 +250,10 @@ class FrontController extends Controller
     {
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
-        $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
+        if($_SESSION['type']=="vendeur"){
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
+    }
+    else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
         $user=$ems->findByid($_SESSION{'id'});
         return $this->render('MagasinBundle:Front:commande.html.twig',array('user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
