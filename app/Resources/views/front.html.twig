@@ -157,7 +157,7 @@
                                                         <h6>{{ c.nom }}</h6>
                                                         {% for b in cat %}
                                                             {% if c.id==b.idparent %}
-                                                                <li><a href="products.html">{{ b.nom }}</a></li>
+                                                                <li><a href="produit?cat={{ b.nom }}">{{ b.nom }}</a></li>
                                                             {% endif %}
                                                         {% endfor %}
                                                     {% endif %}

@@ -40,6 +40,7 @@
 
                                         {% if art is defined %}
                                             {% for c in art %}
+                                            <form action="#" method="post">
                                                 <tr>
                                                     <td>{{ c.titre }}</td>
                                                     <td>{{ c.prix }} TND</td>
@@ -51,6 +52,7 @@
                                                         <button type="submit" class="w3ls-cart">Add to cart</button>
                                                     </td>
                                                 </tr>
+                                            </form>
                                             {% endfor %}
                                         {% endif %}
 

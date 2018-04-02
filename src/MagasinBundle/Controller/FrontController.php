@@ -212,18 +212,23 @@ class FrontController extends Controller
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
         if($_GET){
-            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+
+                $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
             $art=$em->findBy(array('categorie'=>$_GET['cat']));
-            if($art){
-            return $this->render('MagasinBundle:Front:produit.html.twig',array("ctg"=>$_GET['cat'],"art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
-            }
-            else
-            {
-                return $this->render('MagasinBundle:Front:produit.html.twig',array("ctg"=>$_GET['cat'],"error"=>"Aucun produit pour le categorie","cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+            if(isset($_SESSION)) {
+                if ($art) {
+                    return $this->render('MagasinBundle:Front:produit.html.twig', array("ctg" => $_GET['cat'], "art" => $art, "cat" => $cat, "name" => $_SESSION['login'], "type" => $_SESSION['type'], "id" => $_SESSION['id']));
+                } else {
+                    return $this->render('MagasinBundle:Front:produit.html.twig', array("ctg" => $_GET['cat'], "error" => "Aucun produit pour le categorie", "cat" => $cat, "name" => $_SESSION['login'], "type" => $_SESSION['type'], "id" => $_SESSION['id']));
+                }
+            }else{
+                if ($art) {
+                    return $this->render('MagasinBundle:Front:produit.html.twig', array("ctg" => $_GET['cat'], "art" => $art, "cat" => $cat));
+                } else {
+                    return $this->render('MagasinBundle:Front:produit.html.twig', array("ctg" => $_GET['cat'], "error" => "Aucun produit pour le categorie", "cat" => $cat));
+                }
             }
         }
-
-        return $this->render('MagasinBundle:Front:produit.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
     }
 
@@ -248,15 +253,19 @@ class FrontController extends Controller
 
     public function commandeAction()
     {
+        if(isset($_SESSION['type'])){
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
         if($_SESSION['type']=="vendeur"){
             $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
-    }
-    else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
+        }
+        else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
         $user=$ems->findByid($_SESSION{'id'});
         return $this->render('MagasinBundle:Front:commande.html.twig',array('user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
-
+        }
+        else
+        {        return $this->render('MagasinBundle:Front:connexion.html.twig');
+        }
     }
 
 
