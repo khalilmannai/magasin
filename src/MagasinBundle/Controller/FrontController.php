@@ -36,6 +36,8 @@ class FrontController extends Controller
             $user=$em->findOneBy(array('email'=>$_POST['Email'],'password'=>$_POST['Password']));
             $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur');
             $vendeur=$ems->findOneBy(array('email'=>$_POST['Email'],'password'=>$_POST['Password']));
+            $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$ema->findAll();
             if($user){
                 $id=$user->getId();
                 $type="client";
@@ -43,7 +45,7 @@ class FrontController extends Controller
                 $_SESSION['login']=$login;
                 $_SESSION['id']=$id;
                 $_SESSION['type']=$type;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
+                return $this->render('MagasinBundle:Front:index.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
 
             }
             if($vendeur){
@@ -53,7 +55,7 @@ class FrontController extends Controller
                 $_SESSION['login']=$login;
                 $_SESSION['id']=$id;
                 $_SESSION['type']=$type;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
+                return $this->render('MagasinBundle:Front:index.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
             }
             else{
                 return $this->render('MagasinBundle:Front:connexion.html.twig',array("error"=>" login Incorrect !"));
@@ -254,14 +256,38 @@ class FrontController extends Controller
     public function commandeAction()
     {
         if(isset($_SESSION['type'])){
-        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
-        $cat=$em->findAll();
-        if($_SESSION['type']=="vendeur"){
-            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
-        }
-        else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
-        $user=$ems->findByid($_SESSION{'id'});
-        return $this->render('MagasinBundle:Front:commande.html.twig',array('user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$em->findAll();
+            if($_SESSION['type']=="vendeur"){
+                $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
+            }
+            else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
+            $user=$ems->findByid($_SESSION{'id'});
+            if(isset($_POST["w3ls_item_1"])){
+                $arts[0]=array('titre'=>$_POST["w3ls_item_1"],'prix'=>$_POST["amount_1"],'qte'=>$_POST["quantity_1"]);
+            }
+            if(isset($_POST["w3ls_item_2"])){
+                $arts[1]=array('titre'=>$_POST["w3ls_item_2"],'prix'=>$_POST["amount_2"],'qte'=>$_POST["quantity_2"]);
+            }
+            if(isset($_POST["w3ls_item_3"])){
+                $arts[2]=array('titre'=>$_POST["w3ls_item_3"],'prix'=>$_POST["amount_3"],'qte'=>$_POST["quantity_3"]);
+            }
+            if(isset($_POST["w3ls_item_4"])){
+                $arts[3]=array('titre'=>$_POST["w3ls_item_4"],'prix'=>$_POST["amount_4"],'qte'=>$_POST["quantity_4"]);
+            }
+            if(isset($_POST["w3ls_item_5"])){
+                $arts[4]=array('titre'=>$_POST["w3ls_item_5"],'prix'=>$_POST["amount_5"],'qte'=>$_POST["quantity_5"]);
+            }
+            if(isset($_POST["w3ls_item_6"])){
+                $arts[5]=array('titre'=>$_POST["w3ls_item_6"],'prix'=>$_POST["amount_6"],'qte'=>$_POST["quantity_6"]);
+            }
+            if(isset($_POST["w3ls_item_7"])){
+                $arts[6]=array('titre'=>$_POST["w3ls_item_7"],'prix'=>$_POST["amount_7"],'qte'=>$_POST["quantity_7"]);
+            }
+            $_SESSION['arts']=$arts;
+            return $this->render('MagasinBundle:Front:commande.html.twig',array('arts'=>$arts,'user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+
+
         }
         else
         {        return $this->render('MagasinBundle:Front:connexion.html.twig');

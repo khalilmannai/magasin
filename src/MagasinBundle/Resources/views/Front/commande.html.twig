@@ -20,6 +20,31 @@
                             <td colspan="1">
                                 <form action="/commande" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%">
                                     <fieldset>
+                                        <table class="table table-bordered" style="margin-left: 7%;">
+                                            <thead>
+                                            <tr>
+                                                <th>ARTICLE</th>
+                                                <th>PRIX UNITAIRE</th>
+                                                <th>QUANTITÉ</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% set x=0  %}
+                                            {% for c in arts %}
+                                                <tr>
+                                                    <td>{{ c.titre }}</td>
+                                                    <td><span class="badge badge-success">{{ c.prix }} DNT</span></td>
+                                                    <td><span class="badge">{{ c.qte }}</span></td>
+                                                </tr>
+                                                {% set x=x+(c.prix*c.qte) %}
+                                            {% endfor %}
+                                            <tr>
+                                                <td colspan="3" style="text-align:right">
+                                                    <span class="label label-success" style="font-size: 20px"> Prix Totale: <b>{{ x }}</b></span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                         {% for c in user %}
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Nom et prenom</label>
@@ -39,11 +64,12 @@
                                                 <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="fullName" name="prix" class="form-control" required="true" value="{{ c.tel }}" type="text"></div>
                                             </div>
                                         </div>
-
-                                        <div class="sign-up" style="margin-left: 50%" >
-                                            <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Ajouter">
-                                        </div>
+                                            <div class="sign-up" style="margin-left: 50%" >
+                                                <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Passer commande">
+                                            </div>
                                         {% endfor %}
+
+
 
                                     </fieldset>
                                 </form>
