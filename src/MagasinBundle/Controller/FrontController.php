@@ -2,6 +2,8 @@
 
 namespace MagasinBundle\Controller;
 
+use MagasinBundle\Entity\Commande;
+use MagasinBundle\Entity\Lignecommande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MagasinBundle\Entity\Categorie;
 use MagasinBundle\Entity\User;
@@ -292,6 +294,55 @@ class FrontController extends Controller
         else
         {        return $this->render('MagasinBundle:Front:connexion.html.twig');
         }
+    }
+
+    public function passercommandeAction()
+    {
+        $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$ems->findAll();
+        $em=$this->getDoctrine()->getManager();
+        $commande= new Commande();
+        $commande->setIdclient($_SESSION['id']);
+        $commande->setDate(date('d/m/Y'));
+        $commande->setEtat("commandeatt");
+        $em->persist($commande);
+        $em->flush();
+        $arts=$_SESSION['arts'];
+        $id=$commande->getId();
+        $c="";
+
+
+        foreach ($arts as $array) {
+            $lc=new Lignecommande();
+            $lc->setIdcommande($id);
+            $titre="";
+            $prix=0;
+            $qte=0;
+            foreach ($array as $key => $value) {
+                $c= $key;
+                if($key=="titre"){
+                    $titre=$value;
+                }
+                if($key=="prix"){
+                    $prix=$value;
+                }
+                if($key=="qte"){
+                    $qte=$value;
+                }
+
+            }
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+            $cat=$ems->findOneBy(['titre'=>$titre]);
+            $lc->setIdproduit($cat->getId());
+            $lc->setPrix($prix);
+            $lc->setQuantite($qte);
+            $em->persist($lc);
+            $em->flush();
+        }
+
+
+        return $this->render('MagasinBundle:Front:passercommande.html.twig',array("x"=>$c,"cat"=>$cat,"type"=>$_SESSION['type'],"id"=>$id,"name"=>$_SESSION['login']));
+
     }
 
 

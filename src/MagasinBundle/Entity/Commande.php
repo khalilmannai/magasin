@@ -13,7 +13,12 @@ class Commande
     private $id;
 
     /**
-     * @var \DateTime
+     * @var int
+     */
+    private $idclient;
+
+    /**
+     * @var string
      */
     private $date;
 
@@ -21,21 +26,6 @@ class Commande
      * @var string
      */
     private $etat;
-
-    /**
-     * @var float
-     */
-    private $prix;
-
-    /**
-     * @var \DateTime
-     */
-    private $dateliv;
-
-    /**
-     * @var float
-     */
-    private $prixliv;
 
 
     /**
@@ -49,9 +39,33 @@ class Commande
     }
 
     /**
+     * Set idclient
+     *
+     * @param integer $idclient
+     *
+     * @return Commande
+     */
+    public function setIdclient($idclient)
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
+    /**
+     * Get idclient
+     *
+     * @return int
+     */
+    public function getIdclient()
+    {
+        return $this->idclient;
+    }
+
+    /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param string $date
      *
      * @return Commande
      */
@@ -65,7 +79,7 @@ class Commande
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDate()
     {
@@ -94,78 +108,6 @@ class Commande
     public function getEtat()
     {
         return $this->etat;
-    }
-
-    /**
-     * Set prix
-     *
-     * @param float $prix
-     *
-     * @return Commande
-     */
-    public function setPrix($prix)
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    /**
-     * Get prix
-     *
-     * @return float
-     */
-    public function getPrix()
-    {
-        return $this->prix;
-    }
-
-    /**
-     * Set dateliv
-     *
-     * @param \DateTime $dateliv
-     *
-     * @return Commande
-     */
-    public function setDateliv($dateliv)
-    {
-        $this->dateliv = $dateliv;
-
-        return $this;
-    }
-
-    /**
-     * Get dateliv
-     *
-     * @return \DateTime
-     */
-    public function getDateliv()
-    {
-        return $this->dateliv;
-    }
-
-    /**
-     * Set prixliv
-     *
-     * @param float $prixliv
-     *
-     * @return Commande
-     */
-    public function setPrixliv($prixliv)
-    {
-        $this->prixliv = $prixliv;
-
-        return $this;
-    }
-
-    /**
-     * Get prixliv
-     *
-     * @return float
-     */
-    public function getPrixliv()
-    {
-        return $this->prixliv;
     }
 }
 

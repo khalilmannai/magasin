@@ -9,15 +9,12 @@ MagasinBundle\Entity\Commande:
             generator:
                 strategy: AUTO
     fields:
+        idclient:
+            type: integer
         date:
-            type: date
+            type: string
+            length: 255
         etat:
             type: string
             length: 255
-        prix:
-            type: float
-        dateliv:
-            type: date
-        prixliv:
-            type: float
     lifecycleCallbacks: {  }

@@ -1,0 +1,20 @@
+MagasinBundle\Entity\Lignecommande:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\LignecommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idcommande:
+            type: integer
+        idproduit:
+            type: integer
+        quantite:
+            type: integer
+        prix:
+            type: float
+    lifecycleCallbacks: {  }

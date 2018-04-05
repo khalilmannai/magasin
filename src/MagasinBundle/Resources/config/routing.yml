@@ -53,6 +53,9 @@ magasin_acceptervat:
 magasin_accepterart:
     path:     /accepterart/{id}
     defaults: { _controller: MagasinBundle:Article:accepterart }
+magasin_vente:
+    path:     /vente
+    defaults: { _controller: MagasinBundle:Vendeur:vente }
 
 #front---------------
 
@@ -95,3 +98,6 @@ magasin_suppart:
 magasin_commande:
     path:     /commande
     defaults: { _controller: MagasinBundle:Front:commande }
+magasin_passercommande:
+    path:     /passercommande
+    defaults: { _controller: MagasinBundle:Front:passercommande }
