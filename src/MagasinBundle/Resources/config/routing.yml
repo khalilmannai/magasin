@@ -101,3 +101,12 @@ magasin_commande:
 magasin_passercommande:
     path:     /passercommande
     defaults: { _controller: MagasinBundle:Front:passercommande }
+magasin_venteatt:
+    path:     /venteatt
+    defaults: { _controller: MagasinBundle:Front:venteatt }
+magasin_venteacc:
+    path:     /venteacc
+    defaults: { _controller: MagasinBundle:Front:venteacc }
+magasin_venteliv:
+    path:     /venteliv
+    defaults: { _controller: MagasinBundle:Front:venteliv }

@@ -104,6 +104,7 @@ class VendeurController extends Controller
                 $x=0;
                 foreach ($lc as $array){
                     $idp=$array->getIdproduit();
+
                     foreach ($art as $item) {
                         $idv=$item->getIdvendeur();
                         $idpr=$item->getId();

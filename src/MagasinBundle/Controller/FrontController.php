@@ -345,6 +345,108 @@ class FrontController extends Controller
 
     }
 
+    public function venteattAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
+        $lc=$em->findAll();
+        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $art=$emk->findAll();
+        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $id=$_SESSION["id"];
+        $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
+        $x=0;
+        foreach ($lc as $array){
+            $idp=$array->getIdproduit();
+            foreach ($art as $item) {
+                $idv=$item->getIdvendeur();
+                $idpr=$item->getId();
+                if($id==$idv and $idp==$idpr){
+                    $cmd=$eml->find($array->getIdcommande());
+                    $client=$ema->find($cmd->getIdclient());
+                    $titre=$item->getTitre();
+                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $x=$x+1;
+                }
+            }
+
+        }
+
+
+
+
+            return $this->render('MagasinBundle:Front:venteatt.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+    }
+
+    public function venteaccAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
+        $lc=$em->findAll();
+        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $art=$emk->findAll();
+        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $id=$_SESSION["id"];
+        $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
+        $x=0;
+        foreach ($lc as $array){
+            $idp=$array->getIdproduit();
+            foreach ($art as $item) {
+                $idv=$item->getIdvendeur();
+                $idpr=$item->getId();
+                if($id==$idv and $idp==$idpr){
+                    $cmd=$eml->find($array->getIdcommande());
+                    $client=$ema->find($cmd->getIdclient());
+                    $titre=$item->getTitre();
+                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $x=$x+1;
+                }
+            }
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:venteacc.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+    }
+
+    public function ventelivAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
+        $lc=$em->findAll();
+        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $art=$emk->findAll();
+        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $id=$_SESSION["id"];
+        $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
+        $x=0;
+        foreach ($lc as $array){
+            $idp=$array->getIdproduit();
+            foreach ($art as $item) {
+                $idv=$item->getIdvendeur();
+                $idpr=$item->getId();
+                if($id==$idv and $idp==$idpr){
+                    $cmd=$eml->find($array->getIdcommande());
+                    $client=$ema->find($cmd->getIdclient());
+                    $titre=$item->getTitre();
+                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $x=$x+1;
+                }
+            }
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:venteliv.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+    }
+
 
 
 
