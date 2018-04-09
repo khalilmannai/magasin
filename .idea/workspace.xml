@@ -11,21 +11,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Commande.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Entity/Commande.php">
+      <file leaf-file-name="FrontController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="59" column="33" lean-forward="false" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+            <state relative-caret-position="34">
+              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+              <folding>
+                <element signature="e#44#78#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error1.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error1.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/config/routing.yml">
+      <file leaf-file-name="inscription.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscription.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="111" column="57" lean-forward="false" selection-start-line="111" selection-start-column="57" selection-end-line="111" selection-end-column="57" />
+            <state relative-caret-position="629">
+              <caret line="40" column="84" lean-forward="false" selection-start-line="40" selection-start-column="84" selection-end-line="40" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -34,87 +46,69 @@
       <file leaf-file-name="front.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/front.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="128" column="21" lean-forward="false" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+            <state relative-caret-position="3043">
+              <caret line="179" column="50" lean-forward="false" selection-start-line="179" selection-start-column="50" selection-end-line="179" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="venteatt.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteatt.html.twig">
+      <file leaf-file-name="mescommandes.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/mescommandes.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="49" column="71" lean-forward="false" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="71" />
-              <folding>
-                <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="venteacc.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteacc.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-              <folding>
-                <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="venteliv.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteliv.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vente.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vente.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="34" column="107" lean-forward="false" selection-start-line="34" selection-start-column="107" selection-end-line="34" selection-end-column="107" />
+            <state relative-caret-position="425">
+              <caret line="25" column="96" lean-forward="false" selection-start-line="25" selection-start-column="96" selection-end-line="25" selection-end-column="96" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="supprimervat.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimervat.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="articleacc.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/articleacc.html.twig">
+      <file leaf-file-name="pageFunctions.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/bundles/js/pageFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
-              <caret line="46" column="62" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="62" />
+              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php">
+      <file leaf-file-name="error.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="446" column="58" lean-forward="false" selection-start-line="446" selection-start-column="58" selection-end-line="446" selection-end-column="58" />
-              <folding>
-                <element signature="e#44#78#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="14" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="venteacc.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteacc.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="54" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2040">
+              <caret line="120" column="61" lean-forward="false" selection-start-line="120" selection-start-column="61" selection-end-line="120" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,12 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cat</find>
-      <find>arti</find>
-      <find>prod</find>
-      <find>electronic</find>
-      <find>js</find>
-      <find>sign</find>
       <find>home</find>
       <find>contact</find>
       <find>idpa</find>
@@ -142,7 +130,6 @@
       <find>shop</find>
       <find>Shop More</find>
       <find>login</find>
-      <find>cart</find>
       <find>your</find>
       <find>new</find>
       <find>mobil</find>
@@ -153,6 +140,13 @@
       <find>id</find>
       <find>array</find>
       <find>.js</find>
+      <find>ids</find>
+      <find>type</find>
+      <find>cart</find>
+      <find>.png</find>
+      <find>png</find>
+      <find>jpg</find>
+      <find>a pro</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,10 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/bundles/js/pageFunctions.js" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vendeur.html.twig" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimervat.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/acceptervat.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimeremp.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimervac.html.twig" />
@@ -175,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/connexion.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/modifiercat.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/modifieremp.html.twig" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscription.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscrivendeur.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/employe.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vendeuratt.html.twig" />
@@ -196,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/MagasinBundle/Controller/ArticleController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/front/css/style.css" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/produit.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/commande.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/config/doctrine/Commande.orm.yml" />
@@ -204,14 +192,20 @@
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/passercommande.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vente.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/mesarticles.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/front.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Controller/VendeurController.php" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vendeuracc.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteatt.html.twig" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php" />
-        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/acceptervnt.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteliv.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/livrervent.html.twig" />
         <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteacc.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error1.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscription.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/views/front.html.twig" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php" />
+        <option value="$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/mescommandes.html.twig" />
       </list>
     </option>
   </component>
@@ -260,7 +254,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -357,13 +350,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/PHP/php.exe" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="bas&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;fr&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;fro&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;ommande&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/config/doctrine/Commande.orm.yml&#10;fron&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;ad&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/views/Default/admin.html.twig&#10;front&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;styl&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;js&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/js/pageFunctions.js&#10;ba&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;.black-&#9;null&#9;null&#10;st&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;.content-panel&#9;null&#9;null&#10;.js&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/js/pageFunctions.js&#10;sty&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;boo&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/assets/css/bootstrap.css&#10;base&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;appk&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/AppKernel.php" />
+    <property name="SearchEverywhereHistoryKey" value="pagefun&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/js/pageFunctions.js&#10;fron&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;fr&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;ro&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/config/routing.yml&#10;ventea&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/views/Front/venteatt.html.twig&#10;fro&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;bas&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;ommande&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/config/doctrine/Commande.orm.yml&#10;ad&#9;FILE&#9;file://C:/xampp/htdocs/magasin/src/MagasinBundle/Resources/views/Default/admin.html.twig&#10;front&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/front.html.twig&#10;styl&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;js&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/js/pageFunctions.js&#10;ba&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;.black-&#9;null&#9;null&#10;st&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;.content-panel&#9;null&#9;null&#10;.js&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/js/pageFunctions.js&#10;sty&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/css/style.css&#10;boo&#9;FILE&#9;file://C:/xampp/htdocs/magasin/web/bundles/assets/css/bootstrap.css&#10;base&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/Resources/views/base.html.twig&#10;appk&#9;FILE&#9;file://C:/xampp/htdocs/magasin/app/AppKernel.php" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -448,17 +442,19 @@
       <workItem from="1522789395205" duration="8448000" />
       <workItem from="1522842081431" duration="10689000" />
       <workItem from="1522936295823" duration="13233000" />
+      <workItem from="1523040328699" duration="4139000" />
+      <workItem from="1523284243818" duration="9490000" />
+      <workItem from="1523313349129" duration="405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="368651000" />
+    <option name="totallyTimeSpent" value="382685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42208776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44251135" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -496,41 +492,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/modifiercat.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="79" column="67" lean-forward="false" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/modifieremp.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="34" column="16" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Entity/Categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/modifierprofile.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="25" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscrivendeur.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
@@ -542,13 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscription.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="40" column="108" lean-forward="false" selection-start-line="40" selection-start-column="108" selection-end-line="40" selection-end-column="108" />
         </state>
       </provider>
     </entry>
@@ -587,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/suppart.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -613,14 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="100" column="70" lean-forward="false" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vendeuratt.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="73" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -628,13 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" column="73" lean-forward="false" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/accepterart.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5032">
-          <caret line="296" column="53" lean-forward="false" selection-start-line="296" selection-start-column="53" selection-end-line="296" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -656,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="102" column="31" lean-forward="false" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -711,18 +641,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1094" column="37" lean-forward="false" selection-start-line="1094" selection-start-column="34" selection-end-line="1094" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/CategorieController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="23" column="51" lean-forward="false" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,13 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="7" column="79" lean-forward="false" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#3284#3291#1#HTML" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,49 +688,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="30" column="66" lean-forward="false" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/VendeurController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="113" column="41" lean-forward="false" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
-          <folding>
-            <element signature="e#44#101#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Entity/Commande.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
+        <state relative-caret-position="1003">
           <caret line="59" column="33" lean-forward="false" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/articleacc.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="782">
           <caret line="46" column="62" lean-forward="false" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vente.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="34" column="107" lean-forward="false" selection-start-line="34" selection-start-column="107" selection-end-line="34" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimervat.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,70 +709,154 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="72" column="63" lean-forward="true" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vendeuratt.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="55" column="52" lean-forward="false" selection-start-line="55" selection-start-column="52" selection-end-line="58" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/supprimervat.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/vente.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="34" column="107" lean-forward="false" selection-start-line="34" selection-start-column="107" selection-end-line="34" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Default/accepterart.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="302" column="38" lean-forward="true" selection-start-line="299" selection-start-column="31" selection-end-line="302" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/VendeurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-423">
+          <caret line="82" column="21" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="82" selection-end-column="21" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="e#3725#3732#1#HTML" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#44#101#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php">
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/acceptervnt.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="446" column="58" lean-forward="false" selection-start-line="446" selection-start-column="58" selection-end-line="446" selection-end-column="58" />
-          <folding>
-            <element signature="e#44#78#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="223">
+          <caret line="28" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteatt.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="56" column="87" lean-forward="false" selection-start-line="56" selection-start-column="87" selection-end-line="56" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteliv.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/livrervent.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteacc.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="111" column="57" lean-forward="false" selection-start-line="111" selection-start-column="57" selection-end-line="111" selection-end-column="57" />
+        <state relative-caret-position="2040">
+          <caret line="120" column="61" lean-forward="false" selection-start-line="120" selection-start-column="61" selection-end-line="120" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/front.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="128" column="21" lean-forward="false" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+        <state relative-caret-position="3043">
+          <caret line="179" column="50" lean-forward="false" selection-start-line="179" selection-start-column="50" selection-end-line="179" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteatt.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/inscription.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="49" column="71" lean-forward="false" selection-start-line="49" selection-start-column="71" selection-end-line="49" selection-end-column="71" />
+        <state relative-caret-position="629">
+          <caret line="40" column="84" lean-forward="false" selection-start-line="40" selection-start-column="84" selection-end-line="40" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/error1.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Controller/FrontController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
           <folding>
-            <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#44#78#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteliv.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/mescommandes.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="25" column="96" lean-forward="false" selection-start-line="25" selection-start-column="96" selection-end-line="25" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MagasinBundle/Resources/views/Front/venteacc.html.twig">
+    <entry file="file://$PROJECT_DIR$/web/bundles/js/pageFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="169">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

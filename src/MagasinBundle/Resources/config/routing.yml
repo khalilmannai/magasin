@@ -110,3 +110,12 @@ magasin_venteacc:
 magasin_venteliv:
     path:     /venteliv
     defaults: { _controller: MagasinBundle:Front:venteliv }
+magasin_acceptervnt:
+    path:     /acceptervnt
+    defaults: { _controller: MagasinBundle:Front:acceptervnt }
+magasin_livrervnt:
+    path:     /livrervnt
+    defaults: { _controller: MagasinBundle:Front:livrervnt }
+magasin_mescommandes:
+    path:     /mescommandes
+    defaults: { _controller: MagasinBundle:Front:mescommandes }

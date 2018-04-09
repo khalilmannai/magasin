@@ -260,10 +260,7 @@ class FrontController extends Controller
         if(isset($_SESSION['type'])){
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
             $cat=$em->findAll();
-            if($_SESSION['type']=="vendeur"){
-                $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;
-            }
-            else{$ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur') ;}
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
             $user=$ems->findByid($_SESSION{'id'});
             if(isset($_POST["w3ls_item_1"])){
                 $arts[0]=array('titre'=>$_POST["w3ls_item_1"],'prix'=>$_POST["amount_1"],'qte'=>$_POST["quantity_1"]);
@@ -287,8 +284,12 @@ class FrontController extends Controller
                 $arts[6]=array('titre'=>$_POST["w3ls_item_7"],'prix'=>$_POST["amount_7"],'qte'=>$_POST["quantity_7"]);
             }
             $_SESSION['arts']=$arts;
+            if($_SESSION['type'] == "client"  ){
             return $this->render('MagasinBundle:Front:commande.html.twig',array('arts'=>$arts,'user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
-
+            }
+            else{
+                return $this->render('MagasinBundle:Front:error1.html.twig');
+            }
 
         }
         else
@@ -339,8 +340,6 @@ class FrontController extends Controller
             $em->persist($lc);
             $em->flush();
         }
-
-
         return $this->render('MagasinBundle:Front:passercommande.html.twig',array("x"=>$c,"cat"=>$cat,"type"=>$_SESSION['type'],"id"=>$id,"name"=>$_SESSION['login']));
 
     }
@@ -366,7 +365,7 @@ class FrontController extends Controller
                     $cmd=$eml->find($array->getIdcommande());
                     $client=$ema->find($cmd->getIdclient());
                     $titre=$item->getTitre();
-                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
                     $x=$x+1;
                 }
             }
@@ -400,7 +399,7 @@ class FrontController extends Controller
                     $cmd=$eml->find($array->getIdcommande());
                     $client=$ema->find($cmd->getIdclient());
                     $titre=$item->getTitre();
-                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
                     $x=$x+1;
                 }
             }
@@ -434,7 +433,7 @@ class FrontController extends Controller
                     $cmd=$eml->find($array->getIdcommande());
                     $client=$ema->find($cmd->getIdclient());
                     $titre=$item->getTitre();
-                    $t[$x]=array('type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
                     $x=$x+1;
                 }
             }
@@ -445,6 +444,78 @@ class FrontController extends Controller
 
 
         return $this->render('MagasinBundle:Front:venteliv.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+    }
+
+
+    public function acceptervntAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        if($_GET){
+            $id=$_GET['id'];
+            $em = $this->getDoctrine()->getManager();
+            $employe = $em->getRepository('MagasinBundle\Entity\Commande')->find($id);
+            $employe->setEtat("commandeacc");
+            $em->flush();
+            return $this->render('MagasinBundle:Front:acceptervnt.html.twig',array('cat'=>$cat));
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:error.html.twig');
+    }
+
+    public function livrervntAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        if($_GET){
+            $id=$_GET['id'];
+            $em = $this->getDoctrine()->getManager();
+            $employe = $em->getRepository('MagasinBundle\Entity\Commande')->find($id);
+            $employe->setEtat("commandeliv");
+            $em->flush();
+            return $this->render('MagasinBundle:Front:livrervent.html.twig',array('cat'=>$cat));
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:error.html.twig');
+    }
+
+    public function mescommandesAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
+        $lc=$em->findAll();
+        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $com=$emk->findAll();
+        $id=$_SESSION["id"];
+        $art = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $x=0;
+        foreach ($lc as $array){
+            $idc=$array->getIdcommande();
+            foreach ($com as $item) {
+                if($item->getIdclient()==$id and $item->getId()==$idc){
+                    $article=$art->find($array->getIdproduit());
+                    $titre=$article->getTitre();
+                    $t[$x]=array('ids'=>$id,'type'=>$item->getEtat(),'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$item->getDate());
+                    $x=$x+1;
+                }
+            }
+
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:mescommandes.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
 
 

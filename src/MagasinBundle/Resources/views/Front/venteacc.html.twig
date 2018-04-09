@@ -37,6 +37,7 @@
                                             <th><i class=" fa fa-bookmark"></i> Nom Client</th>
                                             <th><i class=" fa fa-bookmark"></i> Tel Client</th>
                                             <th><i class=" fa fa-bookmark"></i> Adresse Client</th>
+                                            <th><i class=" fa fa-bookmark"></i> Action</th>
                                         </tr>
                                         </thead>
                                         <tbody style="font-weight: bold">
@@ -53,6 +54,10 @@
                                                         <td>{{ c.client.nom }} {{ c.client.prenom }}</td>
                                                         <td>{{ c.client.tel }}</td>
                                                         <td>{{ c.client.adresse }}</td>
+                                                        <td style="text-align: center">
+                                                            <a href="/livrervnt?id={{ c.ids }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-check "></i></button></a>
+                                                            <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash-o "></i></button></a>
+                                                        </td>
                                                     </tr>
                                                 {% endif %}
 
