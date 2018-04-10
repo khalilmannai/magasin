@@ -106,7 +106,8 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            {% if name is defined and type=="vendeuracc" %}
+            {% if name is defined %}
+                {% if type=="vendeuracc" %}
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
                     <li><a href="/" class="act">Aceuil</a></li>
@@ -147,7 +148,8 @@
                     <li><a href="/mesarticles">Mes annonces</a></li>
                 </ul>
             </div>
-            {% else %}
+                    {% endif %}
+            {% if type=="client" %}
                 <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="margin-left:2%;">
                     <ul class="nav navbar-nav">
                         <li><a href="/" class="act">Aceuil</a></li>
@@ -181,6 +183,41 @@
                         <li><a href="about.html">A Propos</a></li>
                     </ul>
                 </div>
+             {% endif %}
+                {% else %}
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="margin-left:2%;">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/" class="act">Aceuil</a></li>
+                            <!-- Mega Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        {% if cat is defined %}
+                                            {% for c in cat %}
+                                                <div class="col-sm-3">
+                                                    <ul class="multi-column-dropdown">
+                                                        {% if c.idparent==0 %}
+                                                            <h6>{{ c.nom }}</h6>
+                                                            {% for b in cat %}
+                                                                {% if c.id==b.idparent %}
+                                                                    <li><a href="produit?cat={{ b.nom }}">{{ b.nom }}</a></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li style="background-color:#2028a0;"><a href="/devenirvendeur">Devenir un vendeur</a></li>
+                            <li><a href="/">Nous Contacter</a></li>
+                            <li><a href="about.html">A Propos</a></li>
+                        </ul>
+                    </div>
             {% endif %}
         </nav>
     </div>
