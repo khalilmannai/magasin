@@ -42,7 +42,8 @@
                                         <th><i class="fa fa-bookmark"></i> Titre</th>
                                         <th><i class="fa fa-bookmark"></i> Prix unitaire</th>
                                         <th><i class="fa fa-bookmark"></i> Quantité</th>
-                                        <th><i class="fa fa-bookmark"></i>Date Commande</th>
+                                        <th><i class="fa fa-bookmark"></i> Date Commande</th>
+                                        <th><i class="fa fa-bookmark"></i> Etat</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -55,6 +56,15 @@
                                                     <td>{{ c.prix  }}</td>
                                                     <td>{{ c.qte  }}</td>
                                                     <td>{{ c.date  }}</td>
+                                                    {% if c.type=="commandeatt" %}
+                                                        <td><span class="label label-warning">En Attente</span></td>
+                                                    {% endif %}
+                                                    {% if c.type=="commandeacc" %}
+                                                        <td><span class="label label-success">Accepté</span></td>
+                                                    {% endif %}
+                                                    {% if c.type=="commandeliv" %}
+                                                        <td><span class="label label-info">Livré</span></td>
+                                                    {% endif %}
                                                 </tr>
                                         {% endfor %}
                                     {% endif %}

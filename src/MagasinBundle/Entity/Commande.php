@@ -18,6 +18,21 @@ class Commande
     private $idclient;
 
     /**
+     * @var int
+     */
+    private $idproduit;
+
+    /**
+     * @var int
+     */
+    private $quantite;
+
+    /**
+     * @var float
+     */
+    private $prix;
+
+    /**
      * @var string
      */
     private $date;
@@ -60,6 +75,78 @@ class Commande
     public function getIdclient()
     {
         return $this->idclient;
+    }
+
+    /**
+     * Set idproduit
+     *
+     * @param integer $idproduit
+     *
+     * @return Commande
+     */
+    public function setIdproduit($idproduit)
+    {
+        $this->idproduit = $idproduit;
+
+        return $this;
+    }
+
+    /**
+     * Get idproduit
+     *
+     * @return int
+     */
+    public function getIdproduit()
+    {
+        return $this->idproduit;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return Commande
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param float $prix
+     *
+     * @return Commande
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float
+     */
+    public function getPrix()
+    {
+        return $this->prix;
     }
 
     /**

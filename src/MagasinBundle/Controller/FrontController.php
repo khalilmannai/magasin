@@ -204,7 +204,7 @@ class FrontController extends Controller
         $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
         $art=$em->findBy(array('idvendeur'=>$_SESSION['id']));
         if($art){
-        return $this->render('MagasinBundle:Front:mesarticles.html.twig',array("art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+            return $this->render('MagasinBundle:Front:mesarticles.html.twig',array("art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
         }
         else{
             return $this->render('MagasinBundle:Front:mesarticles.html.twig',array("error"=>"Pas d'articles !","cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
@@ -217,7 +217,7 @@ class FrontController extends Controller
         $cat = $ems->findAll();
         if($_GET){
 
-                $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
             $art=$em->findBy(array('categorie'=>$_GET['cat']));
             if(isset($_SESSION)) {
                 if ($art) {
@@ -246,12 +246,12 @@ class FrontController extends Controller
     {
         $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$ems->findAll();
-            $em= $this->getDoctrine()->getManager();
-            $em->remove($article);
-            $em->flush();
-            $nom=$article->getTitre();
-            $id=$article->getId();
-            return $this->render('MagasinBundle:Front:suppart.html.twig',array("cat"=>$cat,"type"=>$_SESSION['type'],"id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom));
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+        $nom=$article->getTitre();
+        $id=$article->getId();
+        return $this->render('MagasinBundle:Front:suppart.html.twig',array("cat"=>$cat,"type"=>$_SESSION['type'],"id"=>$id,"name"=>$_SESSION['login'],"nom"=>$nom));
 
     }
 
@@ -285,7 +285,7 @@ class FrontController extends Controller
             }
             $_SESSION['arts']=$arts;
             if($_SESSION['type'] == "client"  ){
-            return $this->render('MagasinBundle:Front:commande.html.twig',array('arts'=>$arts,'user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+                return $this->render('MagasinBundle:Front:commande.html.twig',array('arts'=>$arts,'user'=>$user,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
             }
             else{
                 return $this->render('MagasinBundle:Front:error1.html.twig');
@@ -302,20 +302,13 @@ class FrontController extends Controller
         $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$ems->findAll();
         $em=$this->getDoctrine()->getManager();
-        $commande= new Commande();
-        $commande->setIdclient($_SESSION['id']);
-        $commande->setDate(date('d/m/Y'));
-        $commande->setEtat("commandeatt");
-        $em->persist($commande);
-        $em->flush();
         $arts=$_SESSION['arts'];
-        $id=$commande->getId();
         $c="";
-
-
         foreach ($arts as $array) {
-            $lc=new Lignecommande();
-            $lc->setIdcommande($id);
+            $commande= new Commande();
+            $commande->setIdclient($_SESSION['id']);
+            $commande->setDate(date('d/m/Y'));
+            $commande->setEtat("commandeatt");
             $titre="";
             $prix=0;
             $qte=0;
@@ -334,11 +327,12 @@ class FrontController extends Controller
             }
             $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
             $cat=$ems->findOneBy(['titre'=>$titre]);
-            $lc->setIdproduit($cat->getId());
-            $lc->setPrix($prix);
-            $lc->setQuantite($qte);
-            $em->persist($lc);
+            $commande->setIdproduit($cat->getId());
+            $commande->setPrix($prix);
+            $commande->setQuantite($qte);
+            $em->persist($commande);
             $em->flush();
+            $id=$commande->getId();
         }
         return $this->render('MagasinBundle:Front:passercommande.html.twig',array("x"=>$c,"cat"=>$cat,"type"=>$_SESSION['type'],"id"=>$id,"name"=>$_SESSION['login']));
 
@@ -348,24 +342,22 @@ class FrontController extends Controller
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
-        $lc=$em->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $com=$em->findAll();
         $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
         $art=$emk->findAll();
-        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($lc as $array){
+        foreach ($com as $array){
             $idp=$array->getIdproduit();
             foreach ($art as $item) {
                 $idv=$item->getIdvendeur();
                 $idpr=$item->getId();
                 if($id==$idv and $idp==$idpr){
-                    $cmd=$eml->find($array->getIdcommande());
-                    $client=$ema->find($cmd->getIdclient());
-                    $titre=$item->getTitre();
-                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $client=$ema->find($array->getIdclient());
+                    $art=$emk->find($idp);
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
                     $x=$x+1;
                 }
             }
@@ -375,31 +367,29 @@ class FrontController extends Controller
 
 
 
-            return $this->render('MagasinBundle:Front:venteatt.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        return $this->render('MagasinBundle:Front:venteatt.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
 
     public function venteaccAction()
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
-        $lc=$em->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $com=$em->findAll();
         $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
         $art=$emk->findAll();
-        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($lc as $array){
+        foreach ($com as $array){
             $idp=$array->getIdproduit();
             foreach ($art as $item) {
                 $idv=$item->getIdvendeur();
                 $idpr=$item->getId();
                 if($id==$idv and $idp==$idpr){
-                    $cmd=$eml->find($array->getIdcommande());
-                    $client=$ema->find($cmd->getIdclient());
-                    $titre=$item->getTitre();
-                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $client=$ema->find($array->getIdclient());
+                    $art=$emk->find($idp);
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
                     $x=$x+1;
                 }
             }
@@ -416,24 +406,22 @@ class FrontController extends Controller
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
-        $lc=$em->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $com=$em->findAll();
         $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
         $art=$emk->findAll();
-        $eml = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($lc as $array){
+        foreach ($com as $array){
             $idp=$array->getIdproduit();
             foreach ($art as $item) {
                 $idv=$item->getIdvendeur();
                 $idpr=$item->getId();
                 if($id==$idv and $idp==$idpr){
-                    $cmd=$eml->find($array->getIdcommande());
-                    $client=$ema->find($cmd->getIdclient());
-                    $titre=$item->getTitre();
-                    $t[$x]=array('ids'=>$cmd->getId(),'type'=>$cmd->getEtat(),'client'=>$client,'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
+                    $client=$ema->find($array->getIdclient());
+                    $art=$emk->find($idp);
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
                     $x=$x+1;
                 }
             }
@@ -491,23 +479,20 @@ class FrontController extends Controller
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
-        $lc=$em->findAll();
-        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
-        $com=$emk->findAll();
+        $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+        $com=$em->findAll();
+        $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
         $id=$_SESSION["id"];
-        $art = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($lc as $array){
-            $idc=$array->getIdcommande();
-            foreach ($com as $item) {
-                if($item->getIdclient()==$id and $item->getId()==$idc){
-                    $article=$art->find($array->getIdproduit());
-                    $titre=$article->getTitre();
-                    $t[$x]=array('ids'=>$id,'type'=>$item->getEtat(),'titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$item->getDate());
+        foreach ($com as $array){
+                if($array->getIdclient()==$id){
+                    $client=$ema->find($array->getIdclient());
+                    $art=$emk->find($array->getIdproduit());
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
                     $x=$x+1;
                 }
-            }
+
 
 
         }

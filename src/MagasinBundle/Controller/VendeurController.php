@@ -94,27 +94,28 @@ class VendeurController extends Controller
         if($_SESSION['type']=="admin"){
             if($_GET){
                 $id=$_GET['id'];
-                $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur');
-                $nomv=$ema->find($id)->getMagasin();
-                $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Lignecommande');
-                $lc=$em->findAll();
-                $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
-                $art=$ems->findAll();
-                $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+                $emss = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur');
+                $nomv=$emss->find($id)->getMagasin();
+                $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+                $cat = $ems->findAll();
+                $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Commande');
+                $com=$em->findAll();
+                $emk = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+                $arts=$emk->findAll();
+                $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
                 $x=0;
-                foreach ($lc as $array){
+                foreach ($com as $array){
                     $idp=$array->getIdproduit();
-
-                    foreach ($art as $item) {
-                        $idv=$item->getIdvendeur();
-                        $idpr=$item->getId();
-                        if($id==$idv and $idp==$idpr){
-                            $cmd=$emk->find($array->getIdcommande());
-                            $titre=$item->getTitre();
-                            $t[$x]=array('titre'=>$titre,'prix'=>$array->getPrix(),'qte'=>$array->getQuantite(),'date'=>$cmd->getDate());
-                            $x=$x+1;
-                        }
+                    foreach ($arts as $item){
+                    if($item->getIdvendeur()==$id and $idp==$item->getId()){
+                        $client=$ema->find($array->getIdclient());
+                        $art=$emk->find($array->getIdproduit());
+                        $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+                        $x=$x+1;
                     }
+                    }
+
+
 
                 }
 

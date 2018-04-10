@@ -11,6 +11,12 @@ MagasinBundle\Entity\Commande:
     fields:
         idclient:
             type: integer
+        idproduit:
+            type: integer
+        quantite:
+            type: integer
+        prix:
+            type: float
         date:
             type: string
             length: 255
