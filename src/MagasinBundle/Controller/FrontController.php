@@ -357,8 +357,8 @@ class FrontController extends Controller
                 if($id==$idv and $idp==$idpr){
                     $client=$ema->find($array->getIdclient());
                     $art=$emk->find($idp);
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
                     $x=$x+1;
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
                 }
             }
 
@@ -367,7 +367,7 @@ class FrontController extends Controller
 
 
 
-        return $this->render('MagasinBundle:Front:venteatt.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        return $this->render('MagasinBundle:Front:venteatt.html.twig',array('x'=>$x,"t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
 
     public function venteaccAction()
