@@ -351,15 +351,14 @@ class FrontController extends Controller
         $x=0;
         foreach ($com as $array){
             $idp=$array->getIdproduit();
-            foreach ($art as $item) {
+            $item=$emk->find($idp);
                 $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
+                if($id==$idv){
                     $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
+                    $art=$item;
                     $x=$x+1;
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
-                }
+                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+
             }
 
         }
@@ -383,15 +382,14 @@ class FrontController extends Controller
         $x=0;
         foreach ($com as $array){
             $idp=$array->getIdproduit();
-            foreach ($art as $item) {
-                $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
-                    $x=$x+1;
-                }
+            $item=$emk->find($idp);
+            $idv=$item->getIdvendeur();
+            if($id==$idv){
+                $client=$ema->find($array->getIdclient());
+                $art=$item;
+                $x=$x+1;
+                $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+
             }
 
         }
@@ -415,15 +413,14 @@ class FrontController extends Controller
         $x=0;
         foreach ($com as $array){
             $idp=$array->getIdproduit();
-            foreach ($art as $item) {
-                $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
-                    $x=$x+1;
-                }
+            $item=$emk->find($idp);
+            $idv=$item->getIdvendeur();
+            if($id==$idv){
+                $client=$ema->find($array->getIdclient());
+                $art=$item;
+                $x=$x+1;
+                $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+
             }
 
         }
