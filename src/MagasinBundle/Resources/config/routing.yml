@@ -119,3 +119,4 @@ magasin_livrervnt:
 magasin_mescommandes:
     path:     /mescommandes
     defaults: { _controller: MagasinBundle:Front:mescommandes }
+
