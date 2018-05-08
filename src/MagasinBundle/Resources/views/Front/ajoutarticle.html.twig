@@ -19,6 +19,12 @@
                         <tr>
                             <td colspan="1">
                                 <form action="/ajoutarticle" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%">
+
+                                    {% if ok is defined %}
+                                        <div style="text-align: center;width: 70%;margin-left: 20%;" class="alert alert-success agileits" role="alert">
+                                            <strong>Merci !</strong> Votre annonce va être vérifiée par nos modérateurs et sera bientôt en ligne.
+                                        </div>
+                                    {% endif %}
                                     <fieldset>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Catégorie</label>

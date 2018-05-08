@@ -31,6 +31,11 @@
             <script src="{{ asset('/bundles/bootstrap/js/jquery.js') }}" ></script>
 
             <script src=" {{ asset('/bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("open");
+                }
+            </script>
 
             <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!--[if lt IE 9]>
@@ -53,6 +58,43 @@
         <!--logo start-->
         <a href="index.html" class="logo"><b>Techri ?</b></a>
         <!--logo end-->
+
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- inbox dropdown start-->
+                {% if msg is defined %}
+                <li id="myDropdown" class="dropdown">
+                    <a data-toggle="dropdown" style="color:#ffffff;background-color: #68dff0;" onclick="myFunction()" class="dropdown-toggle" href="#">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-theme" style="background-color: #424a5d;color: #68dff0;">{{ msg|length }}</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">Nouveaux messages recus</p>
+                        </li>
+                            {% for m in msg %}
+                        <li>
+                            <a href="mail?x={{ m.id }}">
+                                <span class="subject">
+                                    <span class="from">{{ m.nom }}</span>
+                                    <span class="time">{{ m.date }}</span>
+                                    </span>
+                                <span class="message" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                        {{ m.message }}
+                                    </span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+                </li>
+                {% endif %}
+                <!-- inbox dropdown end -->
+            </ul>
+            <!--  notification end -->
+        </div>
 
 
         <div class="top-menu">

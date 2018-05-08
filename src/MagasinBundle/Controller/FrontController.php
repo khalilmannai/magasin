@@ -4,6 +4,7 @@ namespace MagasinBundle\Controller;
 
 use MagasinBundle\Entity\Commande;
 use MagasinBundle\Entity\Lignecommande;
+use MagasinBundle\Entity\Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MagasinBundle\Entity\Categorie;
 use MagasinBundle\Entity\User;
@@ -158,6 +159,28 @@ class FrontController extends Controller
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
         return $this->render('MagasinBundle:Front:ajoutarticle.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+
+    }
+    public function modifartAction($id)
+    {
+        if ($_POST) {
+            $em = $this->getDoctrine()->getManager();
+            $article = $em->getRepository('MagasinBundle\Entity\Article')->find($id);
+            $article->setTitre($_POST['titre']);
+            $article->setCategorie($_POST['categorie']);
+            $article->setPrix($_POST['prix']);
+            $article->setQuantite($_POST['quantite']);
+            $article->setDescription($_POST['description']);
+            $article->setImage($_POST['image']);
+            $em->flush();
+
+        }
+
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+        $art=$em->findByid($id);
+        $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$ema->findAll();
+        return $this->render('MagasinBundle:Front:modifart.html.twig',array('ids'=>$id,'art'=>$art,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
     }
     public function devenirvendeurAction()
@@ -499,6 +522,30 @@ class FrontController extends Controller
 
         return $this->render('MagasinBundle:Front:mescommandes.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
+
+    public function contactusAction()
+    {
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $mail= new Mail();
+            $mail->setNom($_POST['nom']);
+            $mail->setEmail($_POST['email']);
+            $mail->setTel($_POST['tel']);
+            $mail->setMessage($_POST['message']);
+            $mail->setDate(date('d/m/Y'));
+            $em->persist($mail);
+            $em->flush();
+            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$em->findAll();
+            return $this->render('MagasinBundle:Front:contactus.html.twig',array('cat'=> $cat,'ok'=>"ok"));
+        }
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:contactus.html.twig',array('cat'=> $cat));
+    }
+
+
+
 
 
 

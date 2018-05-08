@@ -44,6 +44,7 @@
                                                     <td>{{ c.titre }}</td>
                                                     <td>{{ c.categorie }}</td>
                                                     <td style="text-align: center">
+                                                        <a href="/modifart/{{ c.id }}"><button type="button" class="btn btn-success btn-xs" data-toggle="modal">Modifier</button></a>
                                                         <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModal{{ c.id }}"><i class="fa fa-trash-o "></i></button></a>
                                                     </td>
                                                 </tr>
