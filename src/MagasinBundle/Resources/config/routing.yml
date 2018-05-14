@@ -128,4 +128,6 @@ magasin_contactus:
 magasin_modifart:
     path:     /modifart/{id}
     defaults: { _controller: MagasinBundle:Front:modifart}
-
+magasin_upload:
+    path:     /upload
+    defaults: { _controller: MagasinBundle:Front:upload}

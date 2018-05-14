@@ -140,6 +140,36 @@ class FrontController extends Controller
     public function ajoutarticleAction()
     {
         if($_POST){
+            $file=$_FILES['file'];
+            print_r($file);
+            $fileName=$_FILES['file']['name'];
+            $fileTmpName=$_FILES['file']['tmp_name'];
+            $fileSize=$_FILES['file']['size'];
+            $fileError=$_FILES['file']['error'];
+            $fileType=$_FILES['file']['type'];
+
+            $fileExt= explode('.', $fileName);
+            $fileActualExt=strtolower(end($fileExt));
+            $allowed = array('jpg','jpeg','png');
+            if(in_array($fileActualExt,$allowed)){
+                if($fileError===0){
+                    if($fileSize < 1000000){
+                        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+                        $fileNameNew= uniqid('',true).".".$fileActualExt;
+                        $fileDestination= '/uploads/'.$fileNameNew;
+                        move_uploaded_file($fileTmpName,SITE_ROOT.$fileDestination);
+                        header("location: index.php?uploadsuccess");
+                        echo "success!";
+                    }else{
+                        echo "your file is too big!";
+                    }
+
+                }else{
+                    echo "There was an error uploading your file!";
+                }
+            }else{
+                echo "You cannot upload files of this type !";
+            }
             $em=$this->getDoctrine()->getManager();
             $article= new Article();
             $article->setTitre($_POST['titre']);
@@ -147,7 +177,7 @@ class FrontController extends Controller
             $article->setCategorie($_POST['categorie']);
             $article->setQuantite($_POST['quantite']);
             $article->setPrix($_POST['prix']);
-            $article->setImage($_POST['image']);
+            $article->setImage($fileNameNew);
             $article->setIdvendeur($_SESSION['id']);
             $article->setType("articleatt");
             $em->persist($article);
@@ -543,6 +573,47 @@ class FrontController extends Controller
         $cat=$em->findAll();
         return $this->render('MagasinBundle:Front:contactus.html.twig',array('cat'=> $cat));
     }
+
+    public function uploadAction()
+    {
+        if($_POST){
+            $file=$_FILES['file'];
+            print_r($file);
+            $fileName=$_FILES['file']['name'];
+            $fileTmpName=$_FILES['file']['tmp_name'];
+            $fileSize=$_FILES['file']['size'];
+            $fileError=$_FILES['file']['error'];
+            $fileType=$_FILES['file']['type'];
+
+            $fileExt= explode('.', $fileName);
+            $fileActualExt=strtolower(end($fileExt));
+            $allowed = array('jpg','jpeg','png');
+            if(in_array($fileActualExt,$allowed)){
+                if($fileError===0){
+                    if($fileSize < 1000000){
+                        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+                        $fileNameNew= uniqid('',true).".".$fileActualExt;
+                        $fileDestination= '/'.$fileNameNew;
+                        move_uploaded_file($fileTmpName,SITE_ROOT.$fileDestination);
+                        header("location: index.php?uploadsuccess");
+                        echo "success!";
+                    }else{
+                        echo "your file is too big!";
+                    }
+
+                }else{
+                    echo "There was an error uploading your file!";
+                }
+            }else{
+                echo "You cannot upload files of this type !";
+            }
+            return $this->render('MagasinBundle:Front:import.html.twig');
+        }
+        return $this->render('MagasinBundle:Front:import.html.twig');
+    }
+
+
+
 
 
 

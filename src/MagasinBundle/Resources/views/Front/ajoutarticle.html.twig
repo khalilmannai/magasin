@@ -18,7 +18,7 @@
                         <tbody>
                         <tr>
                             <td colspan="1">
-                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%">
+                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%" enctype="multipart/form-data">
 
                                     {% if ok is defined %}
                                         <div style="text-align: center;width: 70%;margin-left: 20%;" class="alert alert-success agileits" role="alert">
@@ -70,11 +70,11 @@
                                                 <label class="col-md-4 control-label">Photos</label>
                                                 <div class="col-xs-6" style="margin-left: 2% ;    width: 63%;">
                                                     <div class="form-group">
-                                                        <input type="file" name="image" >               </div>
+                                                        <input type="file" name="file">               </div>
                                                 </div>
                                             </div>
 
-                                        <div class="sign-up" style="margin-left: 50%" >
+                                        <div class="sign-up" style="margin-left: 50%">
                                             <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Ajouter">
                                         </div>
 
