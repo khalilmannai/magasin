@@ -44,14 +44,14 @@
                                             <form action="#" method="post">
                                                 <tr>
                                                     <td><img src="/uploads/articles/{{ c.image }}" style="height: 150px;width: 150px;"></td>
-                                                    <td>{{ c.titre }}</td>
-                                                    <td>{{ c.prix }} TND</td>
+                                                    <td><h4 style="margin-top: 40%;">{{ c.titre }}</h4></td>
+                                                    <td><h4 style="margin-top: 40%;">{{ c.prix }} TND</h4></td>
                                                     <input type="hidden" name="cmd" value="_cart" />
                                                     <input type="hidden" name="add" value="1" />
                                                     <input type="hidden" name="w3ls_item" value="{{ c.titre }}" />
                                                     <input type="hidden" name="amount" value="{{ c.prix }}" />
                                                     <td style="text-align: center">
-                                                        <button type="submit" class="w3ls-cart">Add to cart</button>
+                                                        <button type="submit" class="w3ls-cart" style="margin-top: 15%;">Add to cart</button>
                                                     </td>
                                                 </tr>
                                             </form>
