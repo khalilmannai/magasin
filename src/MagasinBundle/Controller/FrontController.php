@@ -141,7 +141,7 @@ class FrontController extends Controller
     {
         if($_POST){
             $file=$_FILES['file'];
-            print_r($file);
+//            print_r($file);
             $fileName=$_FILES['file']['name'];
             $fileTmpName=$_FILES['file']['tmp_name'];
             $fileSize=$_FILES['file']['size'];
@@ -156,12 +156,12 @@ class FrontController extends Controller
                     if($fileSize < 1000000){
                         define ('SITE_ROOT', realpath(dirname(__FILE__)));
                         $fileNameNew= uniqid('',true).".".$fileActualExt;
-                        $fileDestination= '/uploads/'.$fileNameNew;
-                        move_uploaded_file($fileTmpName,SITE_ROOT.$fileDestination);
+                        $fileDestination= $this->getParameter('brochures_directory').$fileNameNew;
+                        move_uploaded_file($fileTmpName,$fileDestination);
                         header("location: index.php?uploadsuccess");
-                        echo "success!";
+//                        echo "success!";
                     }else{
-                        echo "your file is too big!";
+//                        echo "your file is too big!";
                     }
 
                 }else{
@@ -402,24 +402,30 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($com as $array){
-            $idp=$array->getIdproduit();
-            $item=$emk->find($idp);
-                $idv=$item->getIdvendeur();
-                if($id==$idv){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$item;
-                    $x=$x+1;
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+        if($com) {
+            foreach ($com as $array) {
+                $idp = $array->getIdproduit();
+                $item = $emk->find($idp);
+                $idv = $item->getIdvendeur();
+                if ($id == $idv) {
+                    $client = $ema->find($array->getIdclient());
+                    $art = $item;
+                    $x = $x + 1;
+                    $t[$x] = array('ids' => $array->getId(), 'type' => $array->getEtat(), 'client' => $client, 'titre' => $art->getTitre(), 'prix' => $art->getPrix(), 'qte' => $array->getQuantite(), 'date' => $array->getDate());
+
+                }
 
             }
+            return $this->render('MagasinBundle:Front:venteatt.html.twig',array('x'=>$x,"t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteatt.html.twig',array("name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
         }
 
 
 
 
-        return $this->render('MagasinBundle:Front:venteatt.html.twig',array('x'=>$x,"t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
 
     public function venteaccAction()
@@ -433,6 +439,7 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
+        if($com){
         foreach ($com as $array){
             $idp=$array->getIdproduit();
             $item=$emk->find($idp);
@@ -446,11 +453,11 @@ class FrontController extends Controller
             }
 
         }
-
-
-
-
-        return $this->render('MagasinBundle:Front:venteacc.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+            return $this->render('MagasinBundle:Front:venteacc.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteacc.html.twig',array("name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
     }
 
     public function ventelivAction()
@@ -464,6 +471,7 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
+        if($com){
         foreach ($com as $array){
             $idp=$array->getIdproduit();
             $item=$emk->find($idp);
@@ -477,11 +485,11 @@ class FrontController extends Controller
             }
 
         }
-
-
-
-
         return $this->render('MagasinBundle:Front:venteliv.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteliv.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
     }
 
 

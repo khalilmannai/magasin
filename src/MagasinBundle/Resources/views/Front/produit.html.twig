@@ -30,6 +30,7 @@
 
                                         <thead >
                                         <tr>
+                                            <th><i class="fa fa-bookmark"></i> Image</th>
                                             <th><i class="fa fa-bookmark"></i> Titre</th>
                                             <th><i class=" fa fa-bookmark"></i> Prix</th>
                                             <th><i class=" fa fa-edit">Action</i></th>
@@ -42,6 +43,7 @@
                                             {% for c in art %}
                                             <form action="#" method="post">
                                                 <tr>
+                                                    <td><img src="/uploads/articles/{{ c.image }}" style="height: 150px;width: 150px;"></td>
                                                     <td>{{ c.titre }}</td>
                                                     <td>{{ c.prix }} TND</td>
                                                     <input type="hidden" name="cmd" value="_cart" />
