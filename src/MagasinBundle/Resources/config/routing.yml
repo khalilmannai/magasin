@@ -131,3 +131,6 @@ magasin_modifart:
 magasin_upload:
     path:     /upload
     defaults: { _controller: MagasinBundle:Front:upload}
+magasin_view:
+    path:     /view
+    defaults: { _controller: MagasinBundle:Front:view}

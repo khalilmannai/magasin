@@ -56,7 +56,8 @@ class EmployeController extends Controller
         if($_SESSION['type']=="admin"){
         if ($_POST) {
             $em = $this->getDoctrine()->getManager();
-            $emp=$em->findAll();
+            $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\User') ;
+            $emp=$ems->findAll();
             $employe = $em->getRepository('MagasinBundle\Entity\User')->find($id);
             $employe->setNom($_POST['nom']);
             $employe->setPrenom($_POST['prenom']);
@@ -65,7 +66,6 @@ class EmployeController extends Controller
             $employe->setEmail($_POST['email']);
             $employe->setLogin($_POST['login']);
             $employe->setPassword($_POST['password']);
-            $employe->setPassword($_POST['logisticien']);
             $em->flush();
             return $this->render('MagasinBundle:Default:employe.html.twig',array('emp'=>$emp,"id"=>$id,"name"=>$_SESSION['login']));
         }

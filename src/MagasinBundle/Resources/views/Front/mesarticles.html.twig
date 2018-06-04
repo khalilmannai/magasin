@@ -30,6 +30,7 @@
 
                                         <thead >
                                         <tr>
+                                            <th><i class="fa fa-bookmark"></i> Image</th>
                                             <th><i class="fa fa-bookmark"></i> Nom</th>
                                             <th><i class=" fa fa-bookmark"></i> Categorie</th>
                                             <th><i class=" fa fa-edit">Action</i></th>
@@ -41,6 +42,7 @@
                                         {% if art is defined %}
                                             {% for c in art %}
                                                 <tr>
+                                                    <td><img src="/uploads/articles/{{ c.image }}" style="height:100px;width:100px;" alt=" " class="img-responsive"></td>
                                                     <td>{{ c.titre }}</td>
                                                     <td>{{ c.categorie }}</td>
                                                     <td style="text-align: center">

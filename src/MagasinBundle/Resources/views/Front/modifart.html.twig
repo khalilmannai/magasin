@@ -18,7 +18,7 @@
                         <tbody>
                         <tr>
                             <td colspan="1">
-                                <form action="/modifart/{{ ids }}" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%">
+                                <form action="/modifart/{{ ids }}" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%" enctype="multipart/form-data">
                                     <fieldset>
                                         {% for c in art %}
                                             <div class="form-group">
@@ -69,7 +69,7 @@
                                             <label class="col-md-4 control-label">Photos</label>
                                             <div class="col-xs-6" style="margin-left: 2% ;    width: 63%;">
                                                 <div class="form-group">
-                                                    <input type="file" name="image">               </div>
+                                                    <input type="file" name="file" >               </div>
                                             </div>
                                         </div>
 

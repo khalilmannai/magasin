@@ -39,6 +39,7 @@
 
                                     <thead >
                                     <tr>
+                                        <th><i class="fa fa-bookmark"></i> Magasin</th>
                                         <th><i class="fa fa-bookmark"></i> Nom</th>
                                         <th><i class="fa fa-bookmark"></i> Prenom</th>
                                         <th><i class=" fa fa-edit"></i>Action</th>
@@ -51,6 +52,7 @@
                                         {% for c in emp %}
                                             {% if c.type=="vendeuracc" %}
                                             <tr>
+                                                <td>{{ c.magasin }}</td>
                                                 <td>{{ c.nom }}</td>
                                                 <td>{{ c.prenom  }}</td>
                                                 <td style="text-align: center">
@@ -127,7 +129,7 @@
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                2014 - Alvarez.is
+                2018 - Techri.tn
                 <a href="index.html#" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>

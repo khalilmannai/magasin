@@ -33,7 +33,7 @@
                                             <th><i class="fa fa-bookmark"></i> Image</th>
                                             <th><i class="fa fa-bookmark"></i> Titre</th>
                                             <th><i class=" fa fa-bookmark"></i> Prix</th>
-                                            <th><i class=" fa fa-edit">Action</i></th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody style="font-weight: bold">
@@ -41,20 +41,22 @@
 
                                         {% if art is defined %}
                                             {% for c in art %}
+                                        {% if c.type=="articleacc" %}
                                             <form action="#" method="post">
                                                 <tr>
                                                     <td><img src="/uploads/articles/{{ c.image }}" style="height: 150px;width: 150px;"></td>
-                                                    <td><h4 style="margin-top: 40%;">{{ c.titre }}</h4></td>
-                                                    <td><h4 style="margin-top: 40%;">{{ c.prix }} TND</h4></td>
+                                                    <td><a href="/view?id={{ c.id }}"><h4 style="margin-top: 60px;">{{ c.titre }}</h4></a></td>
+                                                    <td><h4 style="margin-top: 60px;">{{ c.prix }} TND</h4></td>
                                                     <input type="hidden" name="cmd" value="_cart" />
                                                     <input type="hidden" name="add" value="1" />
                                                     <input type="hidden" name="w3ls_item" value="{{ c.titre }}" />
                                                     <input type="hidden" name="amount" value="{{ c.prix }}" />
                                                     <td style="text-align: center">
-                                                        <button type="submit" class="w3ls-cart" style="margin-top: 15%;">Add to cart</button>
+                                                        <button type="submit" class="w3ls-cart" style="margin-top: 20%;">Add to cart</button>
                                                     </td>
                                                 </tr>
                                             </form>
+                                            {% endif %}
                                             {% endfor %}
                                         {% endif %}
 

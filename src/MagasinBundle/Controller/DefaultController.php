@@ -27,17 +27,24 @@ class DefaultController extends Controller
             $ems=$this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
             $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
             $logi=$ems->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
+            $emk= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+            $arts=$emk->findAll();
+            $x=0;
+            foreach ($arts as $c){
+                $x=$x+1;
+            }
+            $x=($x*100)/1000;
             if($user){
                 $_SESSION['login']=$_POST['Pseudo'];
                 $_SESSION['type']="admin";
-                return $this->render('MagasinBundle:Default:adminhome.html.twig',array("msg"=>$msg,"name"=>$_SESSION['login']));
+                return $this->render('MagasinBundle:Default:adminhome.html.twig',array("nb"=>$x,"msg"=>$msg,"name"=>$_SESSION['login']));
                 
             }elseif ($logi){
                 $_SESSION['login']=$_POST['Pseudo'];
                 $_SESSION['type']="logisticien";
                 $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
                 $art=$em->findAll();
-                return $this->render('MagasinBundle:Default:article.html.twig',array("art"=>$art,"name"=>$_SESSION['login']));
+                return $this->render('MagasinBundle:Default:articleatt.html.twig',array("nb"=>$x,"art"=>$art,"name"=>$_SESSION['login']));
             }
             else{
                 return $this->render('MagasinBundle:Default:admin.html.twig',array("error"=>" login Incorrect !"));
@@ -49,9 +56,16 @@ class DefaultController extends Controller
     {
         $emm= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Mail');
         $msg=$emm->findAll();
+        $emk= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+        $arts=$emk->findAll();
+        $x=0;
+        foreach ($arts as $c){
+            $x=$x+1;
+        }
+        $x=($x*100)/1000;
         if(isset($_SESSION)){
         if($_SESSION['type']=="admin" ){
-        return $this->render('MagasinBundle:Default:adminhome.html.twig',array("msg"=>$msg,"name"=>$_SESSION['login']));
+        return $this->render('MagasinBundle:Default:adminhome.html.twig',array("nb"=>$x,"msg"=>$msg,"name"=>$_SESSION['login']));
         }
         else
         {return $this->render('MagasinBundle:Front:error.html.twig');}
