@@ -304,8 +304,11 @@ class FrontController extends Controller
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        if($_GET){
 
+        if($_GET){
+            if(isset($_SESSION['type'])){
+                session_destroy();
+            }
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
             $art=$em->findBy(array('categorie'=>$_GET['cat']));
             if(isset($_SESSION['login'])) {
