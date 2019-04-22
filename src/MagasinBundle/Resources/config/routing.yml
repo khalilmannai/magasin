@@ -56,6 +56,9 @@ magasin_accepterart:
 magasin_vente:
     path:     /vente
     defaults: { _controller: MagasinBundle:Vendeur:vente }
+magasin_mail:
+    path:     /mail
+    defaults: { _controller: MagasinBundle:Default:mail }
 
 #front---------------
 
@@ -119,3 +122,15 @@ magasin_livrervnt:
 magasin_mescommandes:
     path:     /mescommandes
     defaults: { _controller: MagasinBundle:Front:mescommandes }
+magasin_contactus:
+    path:     /contactus
+    defaults: { _controller: MagasinBundle:Front:contactus }
+magasin_modifart:
+    path:     /modifart/{id}
+    defaults: { _controller: MagasinBundle:Front:modifart}
+magasin_upload:
+    path:     /upload
+    defaults: { _controller: MagasinBundle:Front:upload}
+magasin_view:
+    path:     /view
+    defaults: { _controller: MagasinBundle:Front:view}

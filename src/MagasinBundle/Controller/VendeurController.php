@@ -121,7 +121,11 @@ class VendeurController extends Controller
 
 
             }
-            return $this->render('MagasinBundle:Default:vente.html.twig',array("nomv"=>$nomv,"x"=>$t,"name"=>$_SESSION['login']));
+            if($x>0){
+            return $this->render('MagasinBundle:Default:vente.html.twig',array("nomv"=>$nomv,"x"=>$t,"name"=>$_SESSION['login']));}
+            else{
+                return $this->render('MagasinBundle:Default:vente.html.twig',array("nomv"=>$nomv,"name"=>$_SESSION['login']));
+            }
         }
         else
         {return $this->render('MagasinBundle:Front:error.html.twig');}

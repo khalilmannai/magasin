@@ -4,6 +4,7 @@ namespace MagasinBundle\Controller;
 
 use MagasinBundle\Entity\Commande;
 use MagasinBundle\Entity\Lignecommande;
+use MagasinBundle\Entity\Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MagasinBundle\Entity\Categorie;
 use MagasinBundle\Entity\User;
@@ -18,10 +19,14 @@ class FrontController extends Controller
     {
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
+        $ems= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+        $art=$ems->findAll();
         if(isset($_SESSION['login'])){
-            return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
+            if(!isset($_SESSION['type'])){
+            return $this->render('MagasinBundle:Front:index.html.twig',array('art'=>$art,'cat'=> $cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
         }
-        return $this->render('MagasinBundle:Front:index.html.twig',array('cat'=> $cat));
+        }
+        return $this->render('MagasinBundle:Front:index.html.twig',array('art'=>$art,'cat'=> $cat));
     }
 
 
@@ -40,6 +45,8 @@ class FrontController extends Controller
             $vendeur=$ems->findOneBy(array('email'=>$_POST['Email'],'password'=>$_POST['Password']));
             $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
             $cat=$ema->findAll();
+            $emk= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+            $art=$emk->findAll();
             if($user){
                 $id=$user->getId();
                 $type="client";
@@ -47,7 +54,7 @@ class FrontController extends Controller
                 $_SESSION['login']=$login;
                 $_SESSION['id']=$id;
                 $_SESSION['type']=$type;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
+                return $this->render('MagasinBundle:Front:index.html.twig',array("art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
 
             }
             if($vendeur){
@@ -57,7 +64,7 @@ class FrontController extends Controller
                 $_SESSION['login']=$login;
                 $_SESSION['id']=$id;
                 $_SESSION['type']=$type;
-                return $this->render('MagasinBundle:Front:index.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
+                return $this->render('MagasinBundle:Front:index.html.twig',array("art"=>$art,"cat"=>$cat,"name"=>$_SESSION['login'],"id"=>$_SESSION['id'],"type"=>$_SESSION['type']));
             }
             else{
                 return $this->render('MagasinBundle:Front:connexion.html.twig',array("error"=>" login Incorrect !"));
@@ -139,6 +146,36 @@ class FrontController extends Controller
     public function ajoutarticleAction()
     {
         if($_POST){
+            $file=$_FILES['file'];
+//            print_r($file);
+            $fileName=$_FILES['file']['name'];
+            $fileTmpName=$_FILES['file']['tmp_name'];
+            $fileSize=$_FILES['file']['size'];
+            $fileError=$_FILES['file']['error'];
+            $fileType=$_FILES['file']['type'];
+
+            $fileExt= explode('.', $fileName);
+            $fileActualExt=strtolower(end($fileExt));
+            $allowed = array('jpg','jpeg','png');
+            if(in_array($fileActualExt,$allowed)){
+                if($fileError===0){
+                    if($fileSize < 1000000){
+                        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+                        $fileNameNew= uniqid('',true).".".$fileActualExt;
+                        $fileDestination= $this->getParameter('brochures_directory').$fileNameNew;
+                        move_uploaded_file($fileTmpName,$fileDestination);
+                        header("location: index.php?uploadsuccess");
+//                        echo "success!";
+                    }else{
+//                        echo "your file is too big!";
+                    }
+
+                }else{
+                    echo "There was an error uploading your file!";
+                }
+            }else{
+                echo "You cannot upload files of this type !";
+            }
             $em=$this->getDoctrine()->getManager();
             $article= new Article();
             $article->setTitre($_POST['titre']);
@@ -146,7 +183,7 @@ class FrontController extends Controller
             $article->setCategorie($_POST['categorie']);
             $article->setQuantite($_POST['quantite']);
             $article->setPrix($_POST['prix']);
-            $article->setImage($_POST['image']);
+            $article->setImage($fileNameNew);
             $article->setIdvendeur($_SESSION['id']);
             $article->setType("articleatt");
             $em->persist($article);
@@ -158,6 +195,58 @@ class FrontController extends Controller
         $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
         $cat=$em->findAll();
         return $this->render('MagasinBundle:Front:ajoutarticle.html.twig',array('cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+
+    }
+    public function modifartAction($id)
+    {
+        if ($_POST) {
+            $file=$_FILES['file'];
+//            print_r($file);
+            $fileName=$_FILES['file']['name'];
+            $fileTmpName=$_FILES['file']['tmp_name'];
+            $fileSize=$_FILES['file']['size'];
+            $fileError=$_FILES['file']['error'];
+            $fileType=$_FILES['file']['type'];
+
+            $fileExt= explode('.', $fileName);
+            $fileActualExt=strtolower(end($fileExt));
+            $allowed = array('jpg','jpeg','png');
+            if(in_array($fileActualExt,$allowed)){
+                if($fileError===0){
+                    if($fileSize < 1000000){
+                        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+                        $fileNameNew= uniqid('',true).".".$fileActualExt;
+                        $fileDestination= $this->getParameter('brochures_directory').$fileNameNew;
+                        move_uploaded_file($fileTmpName,$fileDestination);
+                        header("location: index.php?uploadsuccess");
+//                        echo "success!";
+                    }else{
+//                        echo "your file is too big!";
+                    }
+
+                }else{
+                    echo "There was an error uploading your file!";
+                }
+            }else{
+                echo "You cannot upload files of this type !";
+            }
+            $em = $this->getDoctrine()->getManager();
+            $article = $em->getRepository('MagasinBundle\Entity\Article')->find($id);
+            $article->setTitre($_POST['titre']);
+            $article->setCategorie($_POST['categorie']);
+            $article->setPrix($_POST['prix']);
+            $article->setQuantite($_POST['quantite']);
+            $article->setDescription($_POST['description']);
+            $article->setImage($fileNameNew);
+            $em->flush();
+
+        }
+
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
+        $art=$em->findByid($id);
+        $ema= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$ema->findAll();
+        return $this->render('MagasinBundle:Front:modifart.html.twig',array('ids'=>$id,'art'=>$art,'cat'=> $cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
     }
     public function devenirvendeurAction()
@@ -215,11 +304,14 @@ class FrontController extends Controller
     {
         $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
         $cat = $ems->findAll();
-        if($_GET){
 
+        if($_GET){
+            if(isset($_SESSION['type'])){
+                session_destroy();
+            }
             $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article') ;
             $art=$em->findBy(array('categorie'=>$_GET['cat']));
-            if(isset($_SESSION)) {
+            if(isset($_SESSION['login'])) {
                 if ($art) {
                     return $this->render('MagasinBundle:Front:produit.html.twig', array("ctg" => $_GET['cat'], "art" => $art, "cat" => $cat, "name" => $_SESSION['login'], "type" => $_SESSION['type'], "id" => $_SESSION['id']));
                 } else {
@@ -349,25 +441,30 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
-        foreach ($com as $array){
-            $idp=$array->getIdproduit();
-            foreach ($art as $item) {
-                $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
-                    $x=$x+1;
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
+        if($com) {
+            foreach ($com as $array) {
+                $idp = $array->getIdproduit();
+                $item = $emk->find($idp);
+                $idv = $item->getIdvendeur();
+                if ($id == $idv) {
+                    $client = $ema->find($array->getIdclient());
+                    $art = $item;
+                    $x = $x + 1;
+                    $t[$x] = array('ids' => $array->getId(), 'type' => $array->getEtat(), 'client' => $client, 'titre' => $art->getTitre(), 'prix' => $art->getPrix(), 'qte' => $array->getQuantite(), 'date' => $array->getDate());
+
                 }
+
             }
+            return $this->render('MagasinBundle:Front:venteatt.html.twig',array('x'=>$x,"t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteatt.html.twig',array("name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
 
         }
 
 
 
 
-        return $this->render('MagasinBundle:Front:venteatt.html.twig',array('x'=>$x,"t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
 
     public function venteaccAction()
@@ -381,25 +478,25 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
+        if($com){
         foreach ($com as $array){
             $idp=$array->getIdproduit();
-            foreach ($art as $item) {
-                $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
-                    $x=$x+1;
-                }
+            $item=$emk->find($idp);
+            $idv=$item->getIdvendeur();
+            if($id==$idv){
+                $client=$ema->find($array->getIdclient());
+                $art=$item;
+                $x=$x+1;
+                $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+
             }
 
         }
-
-
-
-
-        return $this->render('MagasinBundle:Front:venteacc.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+            return $this->render('MagasinBundle:Front:venteacc.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteacc.html.twig',array("name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
     }
 
     public function ventelivAction()
@@ -413,25 +510,25 @@ class FrontController extends Controller
         $id=$_SESSION["id"];
         $ema = $this->getDoctrine()->getRepository('MagasinBundle\Entity\User');
         $x=0;
+        if($com){
         foreach ($com as $array){
             $idp=$array->getIdproduit();
-            foreach ($art as $item) {
-                $idv=$item->getIdvendeur();
-                $idpr=$item->getId();
-                if($id==$idv and $idp==$idpr){
-                    $client=$ema->find($array->getIdclient());
-                    $art=$emk->find($idp);
-                    $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$art->getQuantite(),'date'=>$array->getDate());
-                    $x=$x+1;
-                }
+            $item=$emk->find($idp);
+            $idv=$item->getIdvendeur();
+            if($id==$idv){
+                $client=$ema->find($array->getIdclient());
+                $art=$item;
+                $x=$x+1;
+                $t[$x]=array('ids'=>$array->getId(),'type'=>$array->getEtat(),'client'=>$client,'titre'=>$art->getTitre(),'prix'=>$art->getPrix(),'qte'=>$array->getQuantite(),'date'=>$array->getDate());
+
             }
 
         }
-
-
-
-
         return $this->render('MagasinBundle:Front:venteliv.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
+        else{
+            return $this->render('MagasinBundle:Front:venteliv.html.twig',array("cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
+        }
     }
 
 
@@ -502,6 +599,95 @@ class FrontController extends Controller
 
         return $this->render('MagasinBundle:Front:mescommandes.html.twig',array("t"=>$t,"cat"=>$cat,"name"=>$_SESSION['login'],"type"=>$_SESSION['type'],"id"=>$_SESSION['id']));
     }
+
+    public function contactusAction()
+    {
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $mail= new Mail();
+            $mail->setNom($_POST['nom']);
+            $mail->setEmail($_POST['email']);
+            $mail->setTel($_POST['tel']);
+            $mail->setMessage($_POST['message']);
+            $mail->setDate(date('d/m/Y'));
+            $em->persist($mail);
+            $em->flush();
+            $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+            $cat=$em->findAll();
+            return $this->render('MagasinBundle:Front:contactus.html.twig',array('cat'=> $cat,'ok'=>"ok"));
+        }
+        $em= $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie') ;
+        $cat=$em->findAll();
+        return $this->render('MagasinBundle:Front:contactus.html.twig',array('cat'=> $cat));
+    }
+
+    public function uploadAction()
+    {
+        if($_POST){
+            $file=$_FILES['file'];
+            print_r($file);
+            $fileName=$_FILES['file']['name'];
+            $fileTmpName=$_FILES['file']['tmp_name'];
+            $fileSize=$_FILES['file']['size'];
+            $fileError=$_FILES['file']['error'];
+            $fileType=$_FILES['file']['type'];
+
+            $fileExt= explode('.', $fileName);
+            $fileActualExt=strtolower(end($fileExt));
+            $allowed = array('jpg','jpeg','png');
+            if(in_array($fileActualExt,$allowed)){
+                if($fileError===0){
+                    if($fileSize < 1000000){
+                        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+                        $fileNameNew= uniqid('',true).".".$fileActualExt;
+                        $fileDestination= '/'.$fileNameNew;
+                        move_uploaded_file($fileTmpName,SITE_ROOT.$fileDestination);
+                        header("location: index.php?uploadsuccess");
+                        echo "success!";
+                    }else{
+                        echo "your file is too big!";
+                    }
+
+                }else{
+                    echo "There was an error uploading your file!";
+                }
+            }else{
+                echo "You cannot upload files of this type !";
+            }
+            return $this->render('MagasinBundle:Front:import.html.twig');
+        }
+        return $this->render('MagasinBundle:Front:import.html.twig');
+    }
+
+
+
+    public function viewAction()
+    {
+        $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Categorie');
+        $cat = $ems->findAll();
+        if($_GET){
+            $id=$_GET['id'];
+            $em = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Article');
+            $art = $em->find($id);
+            $ems = $this->getDoctrine()->getRepository('MagasinBundle\Entity\Vendeur');
+            $vend = $ems->find($art->getIdVendeur());
+            $ven = $vend->getMagasin();
+            return $this->render('MagasinBundle:Front:view.html.twig',array('cat'=>$cat,'art'=>$art,'ven'=>$ven));
+
+        }
+
+
+
+
+        return $this->render('MagasinBundle:Front:error.html.twig');
+    }
+
+
+
+
+
+
+
 
 
 
